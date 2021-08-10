@@ -1,0 +1,12 @@
+{
+  "_template": "gh:cjolowicz/cookiecutter-hypermodern-python",
+  "author": "Eirik Enger",
+  "development_status": "Development Status :: 5 - Production/Stable",
+  "email": "eirroleng@gmail.com",
+  "friendly_name": "Rich NcDump",
+  "github_user": "engeir",
+  "license": "GPL-3.0",
+  "package_name": "ncdump_rich",
+  "project_name": "ncdump-rich",
+  "version": "0.1.0"
+}
