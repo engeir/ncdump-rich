@@ -42,12 +42,20 @@ Use the program as a previewer for `.nc` files, for example through [stpv](https
 My own fork, [stpv](https://github.com/engeir/stpv), provides additional support for
 previewing `.nc` files using this project.
 
+_Preview in [lf](https://github.com/gokcehan/lf)_
+
+![lf-screenshot](demo/lf-demo.png)
+
 Similarly you can get preview of `.nc` files in [nnn](https://github.com/jarun/nnn) by
 including an option for the extension `nc` in the [`preview-tui` plugin](https://github.com/jarun/nnn/blob/fc00faf7d0f4cd0b4637e719af52100861e8c17a/plugins/preview-tui#L247).
 
 ```sh
 nc) fifo_pager ncdump-rich -i "$1" ;;
 ```
+
+_Preview in [nnn](https://github.com/jarun/nnn)_
+
+![nnn-screencapture](demo/nnn-demo.mp4)
 
 ## Contributing
 

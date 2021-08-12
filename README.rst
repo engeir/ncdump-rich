@@ -57,11 +57,36 @@ You can install *Rich NcDump* via pip_ from PyPI_:
 
    $ pip install ncdump-rich
 
+or perhaps even better via pipx_:
+
+.. code:: console
+   $ pipx install ncdump-rich
+
 
 Usage
 -----
 
 Please see the `Command-line Reference <Usage_>`_ for details.
+
+Examples
+^^^^^^^^
+
+Use the program as a previewer for ``.nc`` files, for example through stpv_. `My own
+fork`_ provides additional support for previewing ``.nc`` files using this project.
+
+Preview in lf_
+
+.. image:: demo/lf-demo.png
+
+Similarly you can get preview of ``.nc`` files in nnn_ by including an option for the
+extension ``nc`` in the `\`\`preview-tui\`\` plugin`_.
+
+.. code:: console
+   nc) fifo_pager ncdump-rich -i "$1" ;;
+
+Preview in nnn_
+
+.. image:: demo/nnn-demo.png
 
 
 Contributing
@@ -97,6 +122,12 @@ This project was generated from `@cjolowicz`_'s `Hypermodern Python Cookiecutter
 .. _Hypermodern Python Cookiecutter: https://github.com/cjolowicz/cookiecutter-hypermodern-python
 .. _file an issue: https://github.com/engeir/ncdump-rich/issues
 .. _pip: https://pip.pypa.io/
+.. _pipx: https://github.com/pypa/pipx
+.. _stpv: https://github.com/Naheel-Azawy/stpv
+.. _My own fork: https://github.com/engeir/stpv
+.. _nnn: https://github.com/jarun/nnn
+.. _lf: https://github.com/gokcehan/lf
+.. _``preview-tui`` plugin: https://github.com/jarun/nnn/blob/fc00faf7d0f4cd0b4637e719af52100861e8c17a/plugins/preview-tui#L247
 .. github-only
 .. _Contributor Guide: CONTRIBUTING.rst
 .. _Usage: https://ncdump-rich.readthedocs.io/en/latest/usage.html
