@@ -25,7 +25,7 @@ Rich NcDump
 .. |Tests| image:: https://github.com/engeir/ncdump-rich/workflows/Tests/badge.svg
    :target: https://github.com/engeir/ncdump-rich/actions?workflow=Tests
    :alt: Tests
-.. |Codecov| image:: https://codecov.io/gh/engeir/ncdump-rich/branch/main/graph/badge.svg
+.. |Codecov| image:: https://img.shields.io/codecov/c/gh/engeir/ncdump-rich?label=codecov&logo=codecov
    :target: https://codecov.io/gh/engeir/ncdump-rich
    :alt: Codecov
 .. |pre-commit| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
