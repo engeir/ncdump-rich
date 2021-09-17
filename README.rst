@@ -77,7 +77,7 @@ fork`_ provides additional support for previewing ``.nc`` files using this proje
 
 Preview in lf_
 
-.. image:: /demo/lf-demo.png
+.. image:: /docs/_images/sphx_glr_lf-demo.png
    :width: 600
 
 Similarly you can get preview of ``.nc`` files in nnn_ by including an option for the
@@ -89,7 +89,7 @@ extension ``nc`` in the |preview-tui plugin|_.
 
 Preview in nnn_
 
-.. image:: /demo/nnn-demo.png
+.. image:: /demo/sphx_glr_nnn-demo.png
    :width: 600
 
 
