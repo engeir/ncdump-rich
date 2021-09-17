@@ -10,7 +10,7 @@ output with all information contained in the .nc file.
 import pprint
 import textwrap
 
-from netCDF4 import Dataset
+import netCDF4  # type: ignore
 from rich.console import Console
 
 
@@ -33,7 +33,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     verb: bool (default: True)
         Whether or not nc_attrs, nc_dims, and nc_vars are printed
     """
-    nc_file = Dataset(src_path, "r")
+    nc_file = netCDF4.Dataset(src_path, "r")
     if truecolor:
         console = Console(force_terminal=True, color_system="truecolor", width=200)
     else:
@@ -67,20 +67,25 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     nc_attrs = nc_file.ncattrs()
     print("[bold white]NetCDF Global Attributes:[/bold white]")
     for nc_attr in nc_attrs:
-        if repr(nc_file.getncattr(nc_attr)[0]) != repr("\n"):
+        try:
+            if repr(nc_file.getncattr(nc_attr)[0]) != repr("\n"):
+                print(
+                    "\t[italic white]%s:[/italic white]" % nc_attr,
+                    textwrap.fill(
+                        str(nc_file.getncattr(nc_attr)),
+                        subsequent_indent="\t\t",
+                        break_long_words=False,
+                        break_on_hyphens=False,
+                    ),
+                )
+            else:
+                print(
+                    "\t[italic white]%s:[/italic white]" % nc_attr,
+                    textwrap.indent(str(nc_file.getncattr(nc_attr)), "\t\t"),
+                )
+        except IndexError:
             print(
-                "\t[italic white]%s:[/italic white]" % nc_attr,
-                textwrap.fill(
-                    str(nc_file.getncattr(nc_attr)),
-                    subsequent_indent="\t\t",
-                    break_long_words=False,
-                    break_on_hyphens=False,
-                ),
-            )
-        else:
-            print(
-                "\t[italic white]%s:[/italic white]" % nc_attr,
-                textwrap.indent(str(nc_file.getncattr(nc_attr)), "\t\t"),
+                "\t[italic white]%s:[/italic white] [red]empty[/red]" % nc_attr,
             )
     nc_dims = [dim for dim in nc_file.dimensions]  # list of nc dimensions
 
