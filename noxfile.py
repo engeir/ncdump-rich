@@ -9,18 +9,18 @@ import nox
 try:
     from nox_poetry import Session
     from nox_poetry import session
-except ImportError:
+except ImportError as err:
     message = f"""\
     Nox failed to import the 'nox-poetry' package.
 
     Please install it using the following command:
 
     {sys.executable} -m pip install nox-poetry"""
-    raise SystemExit(dedent(message))
+    raise SystemExit(dedent(message)) from err
 
 
 package = "ncdump_rich"
-python_versions = ["3.9", "3.8", "3.7", "3.6"]
+python_versions = ["3.9", "3.8", "3.7"]
 nox.needs_version = ">= 2021.6.6"
 nox.options.sessions = (
     "pre-commit",

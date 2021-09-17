@@ -1,5 +1,5 @@
 """Test cases for the __main__ module."""
-import netCDF4
+import netCDF4  # type: ignore
 import numpy as np
 import pytest
 from click.testing import CliRunner
