@@ -77,7 +77,7 @@ fork`_ provides additional support for previewing ``.nc`` files using this proje
 
 Preview in lf_
 
-.. image:: ../demo/lf-demo.*
+.. image:: ../demo/lf-demo.png
    :width: 600
 
 Similarly you can get preview of ``.nc`` files in nnn_ by including an option for the
