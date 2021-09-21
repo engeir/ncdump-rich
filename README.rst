@@ -39,13 +39,24 @@ Rich NcDump
 Features
 --------
 
-* TODO
+This project provides an easy way of previewing ``netCDF`` files with nicely
+formatted text in your terminal. The information extracted from the ``.nc``
+files are obtained in a similar way to `this example`_, with some
+modifications. The source code used on the website can be downloaded as
+``netcdf_example.py`` with:
+
+.. code:: console
+
+   $ curl -O http://schubert.atmos.colostate.edu/~cslocum/code/netcdf_example.py
+
+To make the output more readable it is formatted using the python library rich_.
 
 
 Requirements
 ------------
 
-* TODO
+The project depends on the python packages ``click``, ``netCDF4`` and ``rich``. Installation via
+pip_ or pipx_ ensures that all dependencies are installed correctly.
 
 
 Installation
@@ -129,6 +140,8 @@ This project was generated from `@cjolowicz`_'s `Hypermodern Python Cookiecutter
 .. _pipx: https://github.com/pypa/pipx
 .. _stpv: https://github.com/Naheel-Azawy/stpv
 .. _My own fork: https://github.com/engeir/stpv
+.. _rich: https://rich.readthedocs.io/en/latest/
+.. _this example: http://schubert.atmos.colostate.edu/~cslocum/netcdf_example.html
 .. _nnn: https://github.com/jarun/nnn
 .. _lf: https://github.com/gokcehan/lf
 .. |preview-tui plugin| replace:: ``preview-tui`` plugin
