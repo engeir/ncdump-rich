@@ -48,7 +48,7 @@ sphinx-rtd-theme = "^1.0.0"
 sphinx-click = "^3.0.1"
 Pygments = "^2.9.0"
 pytest-cov = "^3.0.0"
-numpy = "^1.21.2"
+numpy = "^1.21.3"
 
 [tool.poetry.scripts]
 ncdump-rich = "ncdump_rich.__main__:main"
