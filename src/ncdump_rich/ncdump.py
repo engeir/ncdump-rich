@@ -63,6 +63,9 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
             s2 = "%s[/red] does not contain variable attributes" % key
             print(s1 + s2)
 
+    # Print the file format
+    if hasattr(nc_file, "file_format"):
+        print(f"[bold white]NetCDF format:[/bold white] {nc_file.file_format}")
     # NetCDF global attributes
     nc_attrs = nc_file.ncattrs()
     print("[bold white]NetCDF Global Attributes:[/bold white]")
