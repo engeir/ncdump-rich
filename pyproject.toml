@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ncdump-rich"
-version = "0.1.3"
+version = "0.1.4"
 description = "Rich NcDump"
 authors = ["Eirik Enger <eirroleng@gmail.com>"]
 license = "GPL-3.0"
