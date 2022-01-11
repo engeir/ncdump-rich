@@ -49,9 +49,6 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         "subsequent_indent": "\t\t\t",
     }
 
-    def fold(line, wrap_args):
-        return textwrap.fill(line, **wrap_args)
-
     def print_ncattr(key: str) -> None:
         """Prints the NetCDF file attributes for a given key.
 
@@ -77,6 +74,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
 
     # Print the file format
     print(f"[bold white]NetCDF format:[/bold white] {nc_file.file_format}")
+
     # NetCDF global attributes
     nc_attrs = nc_file.ncattrs()
     print("[bold white]NetCDF Global Attributes:[/bold white]")
@@ -87,7 +85,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                     "\t[italic white]%s:[/italic white]" % nc_attr,
                     "\n\t\t".join(
                         [
-                            fold(line, wrap_args)
+                            textwrap.fill(line, **wrap_args)
                             for line in str(nc_file.getncattr(nc_attr)).splitlines()
                         ]
                     ),
@@ -97,7 +95,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                     "\t[italic white]%s:[/italic white]" % nc_attr,
                     "\n\t\t".join(
                         [
-                            fold(line, wrap_args)
+                            textwrap.fill(line, **wrap_args)
                             for line in str(nc_file.getncattr(nc_attr)).splitlines()
                         ]
                     ),
