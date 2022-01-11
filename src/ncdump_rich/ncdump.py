@@ -41,13 +41,6 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     else:
         console = Console(width=200, tab_size=4)
     print = console.print
-    wrap_args = {
-        "tabsize": 4,
-        "width": 90,
-        "break_long_words": False,
-        "replace_whitespace": False,
-        "subsequent_indent": "\t\t\t",
-    }
 
     def print_ncattr(key: str) -> None:
         """Prints the NetCDF file attributes for a given key.
@@ -85,7 +78,14 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                     "\t[italic white]%s:[/italic white]" % nc_attr,
                     "\n\t\t".join(
                         [
-                            textwrap.fill(line, **wrap_args)
+                            textwrap.fill(
+                                line,
+                                width=90,
+                                tabsize=4,
+                                break_long_words=False,
+                                replace_whitespace=False,
+                                subsequent_indent="\t\t\t",
+                            )
                             for line in str(nc_file.getncattr(nc_attr)).splitlines()
                         ]
                     ),
@@ -95,7 +95,14 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                     "\t[italic white]%s:[/italic white]" % nc_attr,
                     "\n\t\t".join(
                         [
-                            textwrap.fill(line, **wrap_args)
+                            textwrap.fill(
+                                line,
+                                width=90,
+                                tabsize=4,
+                                break_long_words=False,
+                                replace_whitespace=False,
+                                subsequent_indent="\t\t\t",
+                            )
                             for line in str(nc_file.getncattr(nc_attr)).splitlines()
                         ]
                     ),
