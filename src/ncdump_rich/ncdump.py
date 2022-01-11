@@ -35,9 +35,11 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     """
     nc_file = netCDF4.Dataset(src_path, "r")
     if truecolor:
-        console = Console(force_terminal=True, color_system="truecolor", width=200)
+        console = Console(
+            force_terminal=True, color_system="truecolor", width=200, tab_size=4
+        )
     else:
-        console = Console(width=200)
+        console = Console(width=200, tab_size=4)
     print = console.print
     wrap_args = {
         "tabsize": 4,
