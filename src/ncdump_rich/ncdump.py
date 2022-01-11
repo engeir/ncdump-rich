@@ -39,6 +39,16 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     else:
         console = Console(width=200)
     print = console.print
+    wrap_args = {
+        "tabsize": 4,
+        "width": 90,
+        "break_long_words": False,
+        "replace_whitespace": False,
+        "subsequent_indent": "\t\t\t",
+    }
+
+    def fold(line, wrap_args):
+        return textwrap.fill(line, **wrap_args)
 
     def print_ncattr(key: str) -> None:
         """Prints the NetCDF file attributes for a given key.
@@ -73,17 +83,23 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
             if repr(nc_file.getncattr(nc_attr)[0]) != repr("\n"):
                 print(
                     "\t[italic white]%s:[/italic white]" % nc_attr,
-                    textwrap.fill(
-                        str(nc_file.getncattr(nc_attr)),
-                        subsequent_indent="\t\t",
-                        break_long_words=False,
-                        break_on_hyphens=False,
+                    "\n\t\t".join(
+                        [
+                            fold(line, wrap_args)
+                            for line in str(nc_file.getncattr(nc_attr)).splitlines()
+                        ]
                     ),
                 )
             else:
                 print(
                     "\t[italic white]%s:[/italic white]" % nc_attr,
-                    textwrap.indent(str(nc_file.getncattr(nc_attr)), "\t\t"),
+                    "\n\t\t".join(
+                        [
+                            fold(line, wrap_args)
+                            for line in str(nc_file.getncattr(nc_attr)).splitlines()
+                        ]
+                    ),
+                    # textwrap.indent(str(nc_file.getncattr(nc_attr)), "\t\t"),
                 )
         except IndexError:
             print(
