@@ -35,14 +35,14 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         Whether or not nc_attrs, nc_dims, and nc_vars are printed
     """
     nc_file = netCDF4.Dataset(src_path, "r")
-    width = os.get_terminal_size()[0] if os.get_terminal_size()[0] > 200 else 200
+    width = os.get_terminal_size()[0]
     if truecolor:
         console = Console(
             force_terminal=True, color_system="truecolor", width=width, tab_size=4
         )
     else:
         console = Console(width=width, tab_size=4)
-    print = console.print
+    cprint = console.print
 
     def print_ncattr(key: str) -> None:
         """Prints the NetCDF file attributes for a given key.
@@ -53,36 +53,36 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
             A valid netCDF4.Dataset.variables key
         """
         try:
-            print(
+            cprint(
                 "\t\t[italic white]type:[/italic white]",
                 repr(nc_file.variables[key].dtype),
             )
             for ncattr in nc_file.variables[key].ncattrs():
-                print(
+                cprint(
                     "\t\t[italic white]%s:[/italic white]" % ncattr,
                     repr(nc_file.variables[key].getncattr(ncattr)),
                 )
         except KeyError:
             s1 = "\t\t[italic white]WARNING: [/italic white][red]"
             s2 = "%s[/red] does not contain variable attributes" % key
-            print(s1 + s2)
+            cprint(s1 + s2)
 
     # Print the file format
-    print(f"[bold white]NetCDF format:[/bold white] {nc_file.file_format}")
+    cprint(f"[bold white]NetCDF format:[/bold white] {nc_file.file_format}")
 
     # NetCDF global attributes
     nc_attrs = nc_file.ncattrs()
-    print("[bold white]NetCDF Global Attributes:[/bold white]")
+    cprint("[bold white]NetCDF Global Attributes:[/bold white]")
     for nc_attr in nc_attrs:
         try:
             if repr(nc_file.getncattr(nc_attr)[0]) != repr("\n"):
-                print(
+                cprint(
                     "\t[italic white]%s:[/italic white]" % nc_attr,
                     "\n\t\t".join(
                         [
                             textwrap.fill(
                                 line,
-                                width=width - 12,
+                                width=width - 8,
                                 tabsize=4,
                                 break_long_words=False,
                                 replace_whitespace=False,
@@ -93,13 +93,13 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                     ),
                 )
             else:
-                print(
+                cprint(
                     "\t[italic white]%s:[/italic white]" % nc_attr,
                     "\n\t\t".join(
                         [
                             textwrap.fill(
                                 line,
-                                width=width - 12,
+                                width=width - 8,
                                 tabsize=4,
                                 break_long_words=False,
                                 replace_whitespace=False,
@@ -111,50 +111,50 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                     # textwrap.indent(str(nc_file.getncattr(nc_attr)), "\t\t"),
                 )
         except IndexError:
-            print(
+            cprint(
                 "\t[italic white]%s:[/italic white] [red]empty[/red]" % nc_attr,
             )
     nc_dims = [dim for dim in nc_file.dimensions]  # list of nc dimensions
 
     # Dimension shape information.
-    print("[bold white]NetCDF dimension information:[/bold white]")
+    cprint("[bold white]NetCDF dimension information:[/bold white]")
     for dim in nc_dims:
-        print("\t[italic white]Name:[/italic white]", dim)
-        print("\t\t[italic white]size:[/italic white]", len(nc_file.dimensions[dim]))
+        cprint("\t[italic white]Name:[/italic white]", dim)
+        cprint("\t\t[italic white]size:[/italic white]", len(nc_file.dimensions[dim]))
         print_ncattr(dim)
 
     # Variable information.
     nc_vars = [var for var in nc_file.variables]  # list of nc variables
-    print("[bold white]NetCDF variable information:[/bold white]")
+    cprint("[bold white]NetCDF variable information:[/bold white]")
     if long:
         for var in nc_vars:
             if var not in nc_dims:
-                print("\t[italic white]Name:[/italic white]", var)
-                print(
+                cprint("\t[italic white]Name:[/italic white]", var)
+                cprint(
                     "\t\t[italic white]dimensions:[/italic white]",
                     repr(nc_file.variables[var].dimensions),
                 )
-                print(
+                cprint(
                     "\t\t[italic white]size:[/italic white]",
                     nc_file.variables[var].size,
                 )
                 print_ncattr(var)
     else:
         if len(nc_vars) > 20:
-            print("\t[italic white]Number of variables: [/italic white]", len(nc_vars))
-            print("\t[italic white]Variables list: [/italic white]")  # , '\n', nc_vars)
+            cprint("\t[italic white]Number of variables: [/italic white]", len(nc_vars))
+            cprint("\t[italic white]Variables list: [/italic white]")  # , '\n', nc_vars)
             pp = pprint.PrettyPrinter(width=width, compact=True)
-            print(textwrap.indent(pp.pformat(nc_vars), "\t\t"))
+            cprint(textwrap.indent(pp.pformat(nc_vars), "\t\t"))
             # pprint.pprint(nc_vars)
         else:
             for var in nc_vars:
                 if var not in nc_dims:
-                    print("\t[italic white]Name:[/italic white]", var)
-                    print(
+                    cprint("\t[italic white]Name:[/italic white]", var)
+                    cprint(
                         "\t\t[italic white]dimensions:[/italic white]",
                         repr(nc_file.variables[var].dimensions),
                     )
-                    print(
+                    cprint(
                         "\t\t[italic white]size:[/italic white]",
                         nc_file.variables[var].size,
                     )
