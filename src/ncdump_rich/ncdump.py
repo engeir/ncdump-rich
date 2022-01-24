@@ -7,6 +7,7 @@ so the most important information is presented.
 The flag `-l` `--long` will override the truncation and print a long
 output with all information contained in the .nc file.
 """
+import os
 import pprint
 import textwrap
 
@@ -34,12 +35,13 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         Whether or not nc_attrs, nc_dims, and nc_vars are printed
     """
     nc_file = netCDF4.Dataset(src_path, "r")
+    width = os.get_terminal_size()[0] if os.get_terminal_size()[0] > 200 else 200
     if truecolor:
         console = Console(
-            force_terminal=True, color_system="truecolor", width=200, tab_size=4
+            force_terminal=True, color_system="truecolor", width=width, tab_size=4
         )
     else:
-        console = Console(width=200, tab_size=4)
+        console = Console(width=width, tab_size=4)
     print = console.print
 
     def print_ncattr(key: str) -> None:
@@ -80,7 +82,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                         [
                             textwrap.fill(
                                 line,
-                                width=90,
+                                width=width - 12,
                                 tabsize=4,
                                 break_long_words=False,
                                 replace_whitespace=False,
@@ -97,7 +99,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                         [
                             textwrap.fill(
                                 line,
-                                width=90,
+                                width=width - 12,
                                 tabsize=4,
                                 break_long_words=False,
                                 replace_whitespace=False,
@@ -141,7 +143,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         if len(nc_vars) > 20:
             print("\t[italic white]Number of variables: [/italic white]", len(nc_vars))
             print("\t[italic white]Variables list: [/italic white]")  # , '\n', nc_vars)
-            pp = pprint.PrettyPrinter(width=80, compact=True)
+            pp = pprint.PrettyPrinter(width=width, compact=True)
             print(textwrap.indent(pp.pformat(nc_vars), "\t\t"))
             # pprint.pprint(nc_vars)
         else:
