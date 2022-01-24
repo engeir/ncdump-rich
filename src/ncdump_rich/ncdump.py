@@ -35,7 +35,11 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         Whether or not nc_attrs, nc_dims, and nc_vars are printed
     """
     nc_file = netCDF4.Dataset(src_path, "r")
-    width = os.get_terminal_size()[0]
+    try:
+        width = os.get_terminal_size()[0]
+    except OSError as e:
+        print(e)
+        width = 200
     if truecolor:
         console = Console(
             force_terminal=True, color_system="truecolor", width=width, tab_size=4
@@ -142,7 +146,9 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     else:
         if len(nc_vars) > 20:
             cprint("\t[italic white]Number of variables: [/italic white]", len(nc_vars))
-            cprint("\t[italic white]Variables list: [/italic white]")  # , '\n', nc_vars)
+            cprint(
+                "\t[italic white]Variables list: [/italic white]"
+            )  # , '\n', nc_vars)
             pp = pprint.PrettyPrinter(width=width, compact=True)
             cprint(textwrap.indent(pp.pformat(nc_vars), "\t\t"))
             # pprint.pprint(nc_vars)
