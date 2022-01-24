@@ -21,7 +21,7 @@ except ImportError as err:
 
 
 package = "ncdump_rich"
-python_versions = ["3.9", "3.8", "3.7"]
+python_versions = ["3.10", "3.9", "3.8", "3.7"]
 nox.needs_version = ">= 2021.6.6"
 nox.options.sessions = (
     "pre-commit",
@@ -37,11 +37,13 @@ nox.options.sessions = (
 
 def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
     """Install packages constrained by Poetry's lock file.
+
     This function is a wrapper for nox.sessions.Session.install. It invokes pip to install
     packages inside of the session's virtualenv. Additionally, pip is passed a constraints
     file generated from Poetry's lock file, to ensure that the packages are pinned to the
     versions specified in poetry.lock. This allows you to manage the packages as Poetry
     development dependencies.
+
     Parameters
     ----------
     session: Session
@@ -71,8 +73,9 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
     session's virtual environment. This allows pre-commit to locate hooks in
     that environment when invoked from git.
 
-    Args:
-        session: The Session object.
+    Parameters
+    ----------
+    session: The Session object.
     """
     if session.bin is None:
         return
@@ -176,21 +179,7 @@ def tests(session: Session) -> None:
             session.notify("coverage", posargs=[])
 
 
-#
-# @session
-# def coverage(session: Session) -> None:
-#     """Produce the coverage report."""
-#     args = session.posargs or ["report"]
-#
-#     session.install("coverage[toml]")
-#
-#     if not session.posargs and any(Path().glob(".coverage.*")):
-#         session.run("coverage", "combine")
-#
-#     session.run("coverage", *args)
-
-
-@session(python="3.9")
+@session(python="3.10")
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
     install_with_constraints(session, "coverage[toml]", "codecov")
@@ -231,7 +220,7 @@ def docs_build(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@session(python="3.9")
+@session(python="3.10")
 def docs(session: Session) -> None:
     """Build and serve the documentation with live reloading on file changes."""
     args = session.posargs or ["--open-browser", "docs", "docs/_build"]
