@@ -1,14 +1,15 @@
 """Nox sessions."""
 import shutil
 import sys
+import tempfile
 from pathlib import Path
 from textwrap import dedent
+from typing import Any
 
 import nox
 
 try:
-    from nox_poetry import Session
-    from nox_poetry import session
+    from nox_poetry import Session, session
 except ImportError as err:
     message = f"""\
     Nox failed to import the 'nox-poetry' package.
@@ -20,7 +21,7 @@ except ImportError as err:
 
 
 package = "ncdump_rich"
-python_versions = ["3.9", "3.8", "3.7"]
+python_versions = ["3.10", "3.9", "3.8", "3.7"]
 nox.needs_version = ">= 2021.6.6"
 nox.options.sessions = (
     "pre-commit",
@@ -34,6 +35,37 @@ nox.options.sessions = (
 )
 
 
+def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
+    """Install packages constrained by Poetry's lock file.
+
+    This function is a wrapper for nox.sessions.Session.install. It invokes pip to install
+    packages inside of the session's virtualenv. Additionally, pip is passed a constraints
+    file generated from Poetry's lock file, to ensure that the packages are pinned to the
+    versions specified in poetry.lock. This allows you to manage the packages as Poetry
+    development dependencies.
+
+    Parameters
+    ----------
+    session: Session
+        The Session object.
+    args: str
+        Command-line arguments for pip.
+    kwargs: Any
+        Additional keyword arguments for Session.install.
+    """
+    with tempfile.NamedTemporaryFile() as requirements:
+        session.run(
+            "poetry",
+            "export",
+            "--dev",
+            "--without-hashes",
+            "--format=requirements.txt",
+            f"--output={requirements.name}",
+            external=True,
+        )
+        session.install(f"--constraint={requirements.name}", *args, **kwargs)
+
+
 def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
     """Activate virtualenv in hooks installed by pre-commit.
 
@@ -41,8 +73,9 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
     session's virtual environment. This allows pre-commit to locate hooks in
     that environment when invoked from git.
 
-    Args:
-        session: The Session object.
+    Parameters
+    ----------
+    session: The Session object.
     """
     if session.bin is None:
         return
@@ -146,17 +179,14 @@ def tests(session: Session) -> None:
             session.notify("coverage", posargs=[])
 
 
-@session
+@session(python="3.10")
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
-    args = session.posargs or ["report"]
+    install_with_constraints(session, "coverage[toml]", "codecov")
 
-    session.install("coverage[toml]")
-
-    if not session.posargs and any(Path().glob(".coverage.*")):
-        session.run("coverage", "combine")
-
-    session.run("coverage", *args)
+    session.run("coverage", "combine")
+    session.run("coverage", "xml", "--fail-under=0")
+    session.run("codecov", *session.posargs)
 
 
 @session(python=python_versions)
@@ -190,7 +220,7 @@ def docs_build(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@session(python="3.9")
+@session(python="3.10")
 def docs(session: Session) -> None:
     """Build and serve the documentation with live reloading on file changes."""
     args = session.posargs or ["--open-browser", "docs", "docs/_build"]
