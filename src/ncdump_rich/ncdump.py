@@ -49,7 +49,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     cprint = console.print
 
     def print_ncattr(key: str) -> None:
-        """Prints the NetCDF file attributes for a given key.
+        """Print the NetCDF file attributes for a given key.
 
         Parameters
         ----------
