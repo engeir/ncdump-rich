@@ -37,9 +37,8 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     nc_file = netCDF4.Dataset(src_path, "r")
     try:
         width = os.get_terminal_size()[0]
-    except OSError as e:
-        print(e)
-        width = 200
+    except OSError:
+        width = 150
     if truecolor:
         console = Console(
             force_terminal=True, color_system="truecolor", width=width, tab_size=4
