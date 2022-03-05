@@ -179,7 +179,7 @@ def tests(session: Session) -> None:
             session.notify("coverage", posargs=[])
 
 
-@session(python="3.10")
+@session(python="3.9")
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
     install_with_constraints(session, "coverage[toml]", "codecov")
