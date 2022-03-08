@@ -182,13 +182,17 @@ def tests(session: Session) -> None:
 @session(python="3.9")
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
+    # Do not use session.posargs unless this is the only session.
+    nsessions = len(session._runner.manifest)  # type: ignore[attr-defined]
+    has_args = session.posargs and nsessions == 1
+    args = session.posargs if has_args else ["report"]
     install_with_constraints(session, "coverage[toml]", "codecov")
 
     try:
         session.run("coverage", "combine")
     finally:
         session.run("coverage", "xml", "--fail-under=0")
-        session.run("codecov", *session.posargs)
+        session.run("codecov", *args)
 
 
 @session(python=python_versions)
