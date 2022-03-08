@@ -184,9 +184,11 @@ def coverage(session: Session) -> None:
     """Produce the coverage report."""
     install_with_constraints(session, "coverage[toml]", "codecov")
 
-    session.run("coverage", "combine")
-    session.run("coverage", "xml", "--fail-under=0")
-    session.run("codecov", *session.posargs)
+    try:
+        session.run("coverage", "combine")
+    finally:
+        session.run("coverage", "xml", "--fail-under=0")
+        session.run("codecov", *session.posargs)
 
 
 @session(python=python_versions)
