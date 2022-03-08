@@ -131,14 +131,10 @@ jobs:
       - name: Combine coverage data and display human readable report
         run: |
           nox --force-color --session=coverage
-        env:
-          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
 
       - name: Create coverage report
         run: |
           nox --force-color --session=coverage -- xml
-        env:
-          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v2.1.0
