@@ -179,21 +179,14 @@ def tests(session: Session) -> None:
             session.notify("coverage", posargs=[])
 
 
-@session(python="3.9")
+@session(python="3.10")
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
-    # Do not use session.posargs unless this is the only session.
-    # nsessions = len(session._runner.manifest)
-    # has_args = session.posargs and nsessions == 1
-    # args = session.posargs if has_args else ["report"]
     install_with_constraints(session, "coverage[toml]", "codecov")
 
-    # try:
-    #     session.run("coverage", "combine")
-    # finally:
+    session.run("coverage", "combine")
     session.run("coverage", "xml", "--fail-under=0")
-    # session.run("codecov", *session.posargs)
-    session.run("codecov")
+    session.run("codecov", *session.posargs)
 
 
 @session(python=python_versions)
