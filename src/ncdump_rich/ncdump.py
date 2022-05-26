@@ -67,7 +67,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                 )
         except KeyError:
             s1 = "\t\t[italic white]WARNING: [/italic white][red]"
-            s2 = "%s[/red] does not contain variable attributes" % key
+            s2 = f"{key}[/red] does not contain variable attributes"
             cprint(s1 + s2)
 
     # Print the file format
