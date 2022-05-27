@@ -1,15 +1,16 @@
 Rich NcDump
 ===========
 
-|PyPI| |Status| |Python Version| |License|
-
-|Read the Docs| |Tests| |Codecov|
-
+|PyPI| |PyPI Downloads| |Status| |Python Version|
+|License| |Read the Docs| |Tests| |Codecov|
 |pre-commit| |Black|
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/ncdump-rich.svg
    :target: https://pypi.org/project/ncdump-rich/
    :alt: PyPI
+.. |PyPI Downloads| image:: https://img.shields.io/pypi/dm/ncdump-rich.svg
+   :target: https://pypi.org/project/ncdump-rich/
+   :alt: PyPI Downloads
 .. |Status| image:: https://img.shields.io/pypi/status/ncdump-rich.svg
    :target: https://pypi.org/project/ncdump-rich/
    :alt: Status
