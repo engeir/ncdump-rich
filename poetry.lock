@@ -498,7 +498,7 @@ python-versions = ">=2.6"
 
 [[package]]
 name = "pep8-naming"
-version = "0.12.1"
+version = "0.13.0"
 description = "Check PEP-8 naming conventions, plugin for flake8"
 category = "dev"
 optional = false
@@ -506,7 +506,6 @@ python-versions = "*"
 
 [package.dependencies]
 flake8 = ">=3.9.1"
-flake8-polyfill = ">=1.0.2,<2"
 
 [[package]]
 name = "platformdirs"
@@ -1054,7 +1053,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<3.11"
-content-hash = "e892965d017e2395c956b6be07c5761ae4d2c87782db4c96c77f938d8c32ed5b"
+content-hash = "ab067064df9126a28709ace0d45adeaae9528c9ae4be086f1118b339cb68b2c9"
 
 [metadata.files]
 alabaster = []
