@@ -443,7 +443,7 @@ python-versions = "*"
 
 [[package]]
 name = "netcdf4"
-version = "1.5.8"
+version = "1.6.0"
 description = "Provides an object-oriented python interface to the netCDF version 4 library."
 category = "main"
 optional = false
