@@ -25,10 +25,13 @@ click = "^8.0.1"
 netCDF4 = "^1.5.7"
 rich = ">=10.7,<13.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.scripts]
+ncdump-rich = "ncdump_rich.__main__:main"
+
+[tool.poetry.group.dev.dependencies]
+safety = "^2.1.1"
 pytest = "^7.1.2"
 coverage = {extras = ["toml"], version = "^6.4"}
-safety = "^1.10.3"
 mypy = "^0.960"
 typeguard = "^2.13.2"
 xdoctest = {extras = ["colors"], version = "^1.0.0"}
@@ -51,9 +54,6 @@ sphinx-click = "^4.0.3"
 Pygments = "^2.11.2"
 pytest-cov = "^3.0.0"
 numpy = "^1.22.3"
-
-[tool.poetry.scripts]
-ncdump-rich = "ncdump_rich.__main__:main"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
