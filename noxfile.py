@@ -57,13 +57,15 @@ def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> Non
         session.run(
             "poetry",
             "export",
-            "--dev",
+            "--with",
+            "dev",
             "--without-hashes",
             "--format=requirements.txt",
             f"--output={requirements.name}",
             external=True,
         )
-        session.install(f"--constraint={requirements.name}", *args, **kwargs)
+        # session.install(f"--constraint={requirements.name}", *args, **kwargs)
+        session.install(*args, **kwargs)
 
 
 def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
