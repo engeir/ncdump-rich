@@ -64,7 +64,8 @@ def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> Non
             f"--output={requirements.name}",
             external=True,
         )
-        session.install(f"--constraint={requirements.name}", *args, **kwargs)
+        # session.install(f"--constraint={requirements.name}", *args, **kwargs)
+        session.install(*args, **kwargs)
 
 
 def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
