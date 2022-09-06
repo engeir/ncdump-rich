@@ -1,7 +1,8 @@
 """Command-line interface."""
 import sys
 
-import click
+import rich_click as click
+from rich import print as rprint
 
 import ncdump_rich.ncdump as ncd
 from . import __version__
@@ -26,15 +27,20 @@ from . import __version__
     default=True,
     show_default=True,
     type=bool,
-    help="Print in formatted text. No formatting is better when the output is stored \
-    and viewed in an editor.",
+    help="Print in formatted text. No formatting is better when the output is stored "
+    + "and viewed in an editor.",
 )
 def main(input: str, long: bool, format: bool) -> None:
     """Rich NcDump."""
     if input.endswith(".nc"):
         ncd.ncdump(input, long=long, truecolor=format)
     else:
-        sys.exit(f"ncdump-rich can only read .nc files, not {input.split('.')[-1]}")
+        rprint(
+            "[bold]ncdump-rich[/bold] can only read [italic green].nc"
+            + f"[/italic green] files, not [italic red].{input.split('.')[-1]}"
+            + "[/italic red]"
+        )
+        sys.exit()
 
 
 if __name__ == "__main__":
