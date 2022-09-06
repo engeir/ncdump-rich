@@ -24,6 +24,7 @@ python = ">=3.8,<3.11"
 click = "^8.0.1"
 netCDF4 = "^1.5.7"
 rich = ">=10.7,<13.0"
+rich-click = "^1.5.2"
 
 [tool.poetry.scripts]
 ncdump-rich = "ncdump_rich.__main__:main"
