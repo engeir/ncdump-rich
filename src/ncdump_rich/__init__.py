@@ -1,2 +1,4 @@
 """Rich NcDump."""
-__version__ = "0.1.12"
+from importlib_metadata import version
+
+__version__ = version(__package__)

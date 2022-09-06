@@ -7,12 +7,15 @@ from rich import print as rprint
 import ncdump_rich.ncdump as ncd
 from . import __version__
 
+# click.rich_click.USE_RICH_MARKUP = True
+click.rich_click.USE_MARKDOWN = True
+click.rich_click.SHOW_ARGUMENTS = True
+# click.rich_click.GROUP_ARGUMENTS_OPTIONS = True
+
 
 @click.command()
 @click.version_option(version=__version__)
-@click.option(
-    "--input", "-i", type=click.Path(exists=True, readable=True), help="File name."
-)
+@click.argument("filename", type=click.Path(exists=True, readable=True), required=True)
 @click.option(
     "--long/--short",
     "-l/-s",
@@ -30,14 +33,18 @@ from . import __version__
     help="Print in formatted text. No formatting is better when the output is stored "
     + "and viewed in an editor.",
 )
-def main(input: str, long: bool, format: bool) -> None:
-    """Rich NcDump."""
-    if input.endswith(".nc"):
-        ncd.ncdump(input, long=long, truecolor=format)
+def main(filename: str, long: bool, format: bool) -> None:
+    """Rich NcDump.
+
+    Read in a netCDF file as FILENAME and beautifully print a preview of it using
+    [Rich](https://github.com/Textualize/rich).
+    """
+    if filename.endswith(".nc"):
+        ncd.ncdump(filename, long=long, truecolor=format)
     else:
         rprint(
             "[bold]ncdump-rich[/bold] can only read [italic green].nc"
-            + f"[/italic green] files, not [italic red].{input.split('.')[-1]}"
+            + f"[/italic green] files, not [italic red].{filename.split('.')[-1]}"
             + "[/italic red]"
         )
         sys.exit()

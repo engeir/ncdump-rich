@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ncdump-rich"
-version = "0.1.12"
+version = "0.2.0"
 description = "Rich NcDump"
 authors = ["Eirik Enger <eirroleng@gmail.com>"]
 license = "GPL-3.0"
@@ -25,6 +25,7 @@ click = "^8.0.1"
 netCDF4 = "^1.5.7"
 rich = ">=10.7,<13.0"
 rich-click = "^1.5.2"
+importlib-metadata = "^4.12.0"
 
 [tool.poetry.scripts]
 ncdump-rich = "ncdump_rich.__main__:main"
