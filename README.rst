@@ -97,7 +97,7 @@ extension ``nc`` in the |preview-tui plugin|_.
 
 .. code:: console
 
-   nc) fifo_pager ncdump-rich -i "$1" ;;
+   nc) fifo_pager ncdump-rich "$1" ;;
 
 Preview in nnn_
 
