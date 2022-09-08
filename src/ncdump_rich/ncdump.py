@@ -72,7 +72,10 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
 
     # Print file properties
     cprint(f"[bold white]NetCDF Properties:[/bold white] {nc_file.file_format}")
-    for key, prop in {"File format": "file_format", "Disk format": "disk_format"}.items():
+    for key, prop in {
+        "File format": "file_format",
+        "Disk format": "disk_format",
+    }.items():
         cprint(f"\t[italic white]{key}[/italic white]: {getattr(nc_file, prop)}")
 
     # NetCDF global attributes
