@@ -64,6 +64,11 @@ def test_main_succeeds(runner: CliRunner) -> None:
         temp[:, :, :] = data_arr  # Appends data along unlimited dimension
         data_slice = np.random.uniform(low=280, high=330, size=(nlats, nlons))
         temp[3, :, :] = data_slice
+
+        # Wrong file name
+        with open("wrong.txt", "w") as f:
+            f.write("Hello, World!")
+
         result = runner.invoke(__main__.main, ["test.nc"])
         result = runner.invoke(__main__.main, ["-s", "-F", "test.nc"])
         result = runner.invoke(__main__.main, ["-l", "-f", "test.nc"])
@@ -72,6 +77,7 @@ def test_main_succeeds(runner: CliRunner) -> None:
         result = runner.invoke(__main__.main, ["-s", "-F", "test2.nc"])
         result = runner.invoke(__main__.main, ["-l", "-f", "test2.nc"])
         result = runner.invoke(__main__.main, ["-l", "-F", "test2.nc"])
+        result = runner.invoke(__main__.main, ["wrong.txt"])
         ds.close()
         ncfile.close()
     assert result.exit_code == 0
