@@ -70,8 +70,10 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
             s2 = f"{key}[/red] does not contain variable attributes"
             cprint(s1 + s2)
 
-    # Print the file format
-    cprint(f"[bold white]NetCDF format:[/bold white] {nc_file.file_format}")
+    # Print file properties
+    cprint(f"[bold white]NetCDF Properties:[/bold white] {nc_file.file_format}")
+    for key, prop in {"File format": "file_format", "Disk format": "disk_format"}.items():
+        cprint(f"\t[italic white]{key}[/italic white]: {getattr(nc_file, prop)}")
 
     # NetCDF global attributes
     nc_attrs = nc_file.ncattrs()
@@ -111,15 +113,10 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                             for line in str(nc_file.getncattr(nc_attr)).splitlines()
                         ]
                     ),
-                    # textwrap.indent(str(nc_file.getncattr(nc_attr)), "\t\t"),
                 )
         except IndexError:
-            cprint(
-                "\t[italic white]%s:[/italic white] [red]empty[/red]" % nc_attr,
-            )
-    nc_dims = [dim for dim in nc_file.dimensions]  # list of nc dimensions
-
-    # Dimension shape information.
+            cprint("\t[italic white]%s:[/italic white] [red]empty[/red]" % nc_attr)
+    nc_dims = list(nc_file.dimensions)
     cprint("[bold white]NetCDF dimension information:[/bold white]")
     for dim in nc_dims:
         cprint("\t[italic white]Name:[/italic white]", dim)
@@ -127,7 +124,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         print_ncattr(dim)
 
     # Variable information.
-    nc_vars = [var for var in nc_file.variables]  # list of nc variables
+    nc_vars = list(nc_file.variables)  # list of nc variables
     cprint("[bold white]NetCDF variable information:[/bold white]")
     if long:
         for var in nc_vars:
@@ -145,12 +142,9 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     else:
         if len(nc_vars) > 20:
             cprint("\t[italic white]Number of variables: [/italic white]", len(nc_vars))
-            cprint(
-                "\t[italic white]Variables list: [/italic white]"
-            )  # , '\n', nc_vars)
+            cprint("\t[italic white]Variables list: [/italic white]")
             pp = pprint.PrettyPrinter(width=width, compact=True)
             cprint(textwrap.indent(pp.pformat(nc_vars), "\t\t"))
-            # pprint.pprint(nc_vars)
         else:
             for var in nc_vars:
                 if var not in nc_dims:
