@@ -64,14 +64,14 @@ def test_main_succeeds(runner: CliRunner) -> None:
         temp[:, :, :] = data_arr  # Appends data along unlimited dimension
         data_slice = np.random.uniform(low=280, high=330, size=(nlats, nlons))
         temp[3, :, :] = data_slice
-        result = runner.invoke(__main__.main, ["-i", "test.nc"])
-        result = runner.invoke(__main__.main, ["-s", "-F", "-i", "test.nc"])
-        result = runner.invoke(__main__.main, ["-l", "-f", "-i", "test.nc"])
-        result = runner.invoke(__main__.main, ["-l", "-F", "-i", "test.nc"])
-        result = runner.invoke(__main__.main, ["-i", "test2.nc"])
-        result = runner.invoke(__main__.main, ["-s", "-F", "-i", "test2.nc"])
-        result = runner.invoke(__main__.main, ["-l", "-f", "-i", "test2.nc"])
-        result = runner.invoke(__main__.main, ["-l", "-F", "-i", "test2.nc"])
+        result = runner.invoke(__main__.main, ["test.nc"])
+        result = runner.invoke(__main__.main, ["-s", "-F", "test.nc"])
+        result = runner.invoke(__main__.main, ["-l", "-f", "test.nc"])
+        result = runner.invoke(__main__.main, ["-l", "-F", "test.nc"])
+        result = runner.invoke(__main__.main, ["test2.nc"])
+        result = runner.invoke(__main__.main, ["-s", "-F", "test2.nc"])
+        result = runner.invoke(__main__.main, ["-l", "-f", "test2.nc"])
+        result = runner.invoke(__main__.main, ["-l", "-F", "test2.nc"])
         ds.close()
         ncfile.close()
     assert result.exit_code == 0
