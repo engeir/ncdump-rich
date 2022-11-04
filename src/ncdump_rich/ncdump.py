@@ -71,7 +71,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
             cprint(s1 + s2)
 
     # Print file properties
-    cprint(f"[bold white]NetCDF Properties:[/bold white] {nc_file.file_format}")
+    cprint("[bold white]NetCDF Properties:[/bold white]")
     for key, prop in {
         "File format": "file_format",
         "Disk format": "disk_format",
