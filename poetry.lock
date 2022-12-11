@@ -737,7 +737,7 @@ jupyter = ["ipywidgets (>=7.5.1,<8.0.0)"]
 
 [[package]]
 name = "rich-click"
-version = "1.5.2"
+version = "1.6.0"
 description = "Format click help output nicely with rich"
 category = "main"
 optional = false
@@ -750,7 +750,6 @@ rich = ">=10.7.0"
 
 [package.extras]
 dev = ["pre-commit"]
-typer = ["typer (>=0.4,<0.6)"]
 
 [[package]]
 name = "ruamel.yaml"
@@ -1603,8 +1602,8 @@ rich = [
     {file = "rich-12.6.0.tar.gz", hash = "sha256:ba3a3775974105c221d31141f2c116f4fd65c5ceb0698657a11e9f295ec93fd0"},
 ]
 rich-click = [
-    {file = "rich-click-1.5.2.tar.gz", hash = "sha256:a57ca70242cb8b372a670eaa0b0be48f2440b66656deb4a56e6aadc1bbb79670"},
-    {file = "rich_click-1.5.2-py3-none-any.whl", hash = "sha256:131a94bed597eab9f1eda7eb41fb7275b6b60ae9e6defc3769277b70b104285d"},
+    {file = "rich-click-1.6.0.tar.gz", hash = "sha256:33799c31f8817101f2eb8fe90e95d2c2acd428a567ee64358ca487f963f75e9c"},
+    {file = "rich_click-1.6.0-py3-none-any.whl", hash = "sha256:aefb0450c22462cf3bf9fa854457e6b3cdf692073174823a00d3b0541a81b19d"},
 ]
 "ruamel.yaml" = [
     {file = "ruamel.yaml-0.17.21-py3-none-any.whl", hash = "sha256:742b35d3d665023981bd6d16b3d24248ce5df75fdb4e2924e93a05c1f8b61ca7"},
