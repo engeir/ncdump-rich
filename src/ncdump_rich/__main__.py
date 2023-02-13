@@ -5,7 +5,7 @@ import rich_click as click
 from rich import print as rprint
 
 import ncdump_rich.ncdump as ncd
-from . import __version__
+from ncdump_rich import __version__
 
 # click.rich_click.USE_RICH_MARKUP = True
 click.rich_click.USE_MARKDOWN = True
