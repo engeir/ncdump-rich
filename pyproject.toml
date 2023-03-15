@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ncdump-rich"
-version = "0.2.1"
+version = "0.3.1"
 description = "Rich NcDump"
 authors = ["Eirik Enger <eirroleng@gmail.com>"]
 license = "GPL-3.0"
@@ -20,12 +20,12 @@ classifiers = [
 Changelog = "https://github.com/engeir/ncdump-rich/releases"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.11"
+python = ">=3.7,<3.11"
 click = "^8.0.1"
 netCDF4 = "^1.5.7"
-rich = ">=10.7,<13.0"
+rich = ">=10.7,<14.0"
 rich-click = "^1.5.2"
-importlib-metadata = "^4.12.0"
+importlib-metadata = ">=4.12,<7.0"
 
 [tool.poetry.scripts]
 ncdump-rich = "ncdump_rich.__main__:main"
@@ -40,7 +40,6 @@ xdoctest = {extras = ["colors"], version = "^1.0.0"}
 sphinx = "^4.5.0"
 sphinx-autobuild = "^2021.3.14"
 pre-commit = "^2.19.0"
-flake8 = "^4.0.1"
 black = "^22.3"
 flake8-bandit = "^2.1.2"
 bandit = "1.7.2"
@@ -55,7 +54,6 @@ sphinx-rtd-theme = "^1.0.0"
 sphinx-click = "^4.0.3"
 Pygments = "^2.11.2"
 pytest-cov = "^3.0.0"
-numpy = "^1.22.3"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]

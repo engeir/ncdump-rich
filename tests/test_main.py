@@ -1,6 +1,5 @@
 """Test cases for the __main__ module."""
 import netCDF4  # type: ignore
-import numpy as np
 import pytest
 from click.testing import CliRunner
 
@@ -25,11 +24,12 @@ def test_main_succeeds(runner: CliRunner) -> None:
         _ = ds.createDimension("lat", 10)
         _ = ds.createDimension("lon", 10)
         for i in range(21):
-            _ = ds.createVariable(f"{i}", "f4", ("time", "lat", "lon",),)[:] = -90.0 + (
-                180.0 / 10
-            ) * np.arange(
-                10
-            )  # south pole to north pole
+            # fmt: off
+            _ = ds.createVariable(f"{i}", "f4", ("time", "lat", "lon",),)[:] = [
+                -90, -70, -50, -30, -10,
+                10, 30, 50, 70, 90,
+            ]  # south pole to north pole
+            # fmt: on
 
         # Few variables
         ncfile = netCDF4.Dataset("test2.nc", mode="w", format="NETCDF4")
@@ -58,11 +58,17 @@ def test_main_succeeds(runner: CliRunner) -> None:
         nlats = len(lat_dim)
         nlons = len(lon_dim)
         ntimes = 3
-        lat[:] = -90.0 + (180.0 / nlats) * np.arange(nlats)  # south pole to north pole
-        lon[:] = (180.0 / nlats) * np.arange(nlons)  # Greenwich meridian eastward
-        data_arr = np.random.uniform(low=280, high=330, size=(ntimes, nlats, nlons))
+        lat[:] = [
+            i * 10 - 90 for i in range(nlats)
+        ]  # -90.0 + (180.0 / nlats) * np.arange(nlats)  # south pole to north pole
+        lon[:] = [
+            180.0 / nlats * i for i in range(nlons)
+        ]  # (180.0 / nlats) * np.arange(nlons)  # Greenwich meridian eastward
+        data_arr = [[list(range(nlons)) for _ in range(nlats)] for _ in range(ntimes)]
         temp[:, :, :] = data_arr  # Appends data along unlimited dimension
-        data_slice = np.random.uniform(low=280, high=330, size=(nlats, nlons))
+        data_slice = [
+            list(range(nlons)) for _ in range(nlats)
+        ]  # np.random.uniform(low=280, high=330, size=(nlats, nlons))
         temp[3, :, :] = data_slice
 
         # Wrong file name
