@@ -7,7 +7,6 @@ so the most important information is presented.
 The flag `-l` `--long` will override the truncation and print a long
 output with all information contained in the .nc file.
 """
-import os
 import pprint
 import textwrap
 
@@ -35,16 +34,11 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         Whether or not nc_attrs, nc_dims, and nc_vars are printed
     """
     nc_file = netCDF4.Dataset(src_path, "r")
-    try:
-        width = os.get_terminal_size()[0]
-    except OSError:
-        width = 150
     if truecolor:
-        console = Console(
-            force_terminal=True, color_system="truecolor", width=width, tab_size=4
-        )
+        console = Console(force_terminal=True, color_system="truecolor", tab_size=4)
     else:
-        console = Console(width=width, tab_size=4)
+        console = Console(tab_size=4)
+    width = console.size.width
     cprint = console.print
 
     def print_ncattr(key: str) -> None:
@@ -146,7 +140,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         if len(nc_vars) > 20:
             cprint("\t[italic white]Number of variables: [/italic white]", len(nc_vars))
             cprint("\t[italic white]Variables list: [/italic white]")
-            pp = pprint.PrettyPrinter(width=width, compact=True)
+            pp = pprint.PrettyPrinter(width=width - 8, compact=True)
             cprint(textwrap.indent(pp.pformat(nc_vars), "\t\t"))
         else:
             for var in nc_vars:

@@ -130,3 +130,5 @@ dmypy.json
 
 # My additions
 .vim/
+test.nc
+test2.nc
