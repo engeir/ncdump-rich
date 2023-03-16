@@ -20,7 +20,7 @@ classifiers = [
 Changelog = "https://github.com/engeir/ncdump-rich/releases"
 
 [tool.poetry.dependencies]
-python = ">=3.7,3.12"
+python = ">=3.7,<3.12"
 click = "^8.0.1"
 netCDF4 = "^1.5.7"
 rich = ">=10.7,<14.0"
