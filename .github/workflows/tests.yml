@@ -93,11 +93,11 @@ jobs:
 
       - name: Generate latest terminal images with rich-codex
         if: matrix.session == 'docs-build'
-        run: |
-          poetry install
         uses: ewels/rich-codex@v1
         with:
           commit_changes: "true"
+        run: |
+          poetry install
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
