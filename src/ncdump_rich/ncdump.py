@@ -77,7 +77,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     cprint("[bold white]NetCDF Global Attributes:[/bold white]")
     for nc_attr in nc_attrs:
         if any(
-            len(line) > width - 8
+            len(line) > width - 9
             for line in str(nc_file.getncattr(nc_attr)).splitlines()
         ):
             lineend = (
@@ -94,7 +94,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                         [
                             textwrap.fill(
                                 " ".join(line.split()),
-                                width=width - 8,
+                                width=width - 9,
                                 tabsize=4,
                                 break_long_words=False,
                                 replace_whitespace=False,
@@ -111,7 +111,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                         [
                             textwrap.fill(
                                 " ".join(line.split()),
-                                width=width - 8,
+                                width=width - 9,
                                 tabsize=4,
                                 break_long_words=False,
                                 replace_whitespace=False,
@@ -150,7 +150,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         if len(nc_vars) > 20:
             cprint("\t[italic white]Number of variables: [/italic white]", len(nc_vars))
             cprint("\t[italic white]Variables list: [/italic white]")
-            pp = pprint.PrettyPrinter(width=width - 8, compact=True)
+            pp = pprint.PrettyPrinter(width=width - 9, compact=True)
             cprint(textwrap.indent(pp.pformat(nc_vars), "\t\t"))
         else:
             for var in nc_vars:
