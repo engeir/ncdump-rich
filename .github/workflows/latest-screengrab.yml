@@ -18,7 +18,6 @@ jobs:
           poetry --version
 
       - name: Install project to generate image
-        if: matrix.session == 'docs-build'
         run: |
           poetry install
 
