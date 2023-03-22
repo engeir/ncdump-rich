@@ -3,5 +3,4 @@ outputs:
     title: Latest Rich NcDump
     img_paths:
       - ./docs/demo/latest.png
-    img_paths:
       - ./demo/latest.png
