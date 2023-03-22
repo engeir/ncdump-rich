@@ -81,7 +81,7 @@ Usage
 
 Please see the `Command-line Reference <Usage_>`_ for details.
 
-.. image:: ./demo/latest.svg
+.. image:: ./demo/latest.png
    :width: 600
 
 Examples
