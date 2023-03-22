@@ -100,7 +100,7 @@ jobs:
         if: matrix.session == 'docs-build'
         uses: ewels/rich-codex@v1
         with:
-          commit_changes: "true"
+          commit_changes: "false"
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
