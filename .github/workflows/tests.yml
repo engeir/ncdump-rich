@@ -91,13 +91,16 @@ jobs:
           name: coverage-data
           path: ".coverage.*"
 
+      - name: Install project to generate image
+        if: matrix.session == 'docs-build'
+        run: |
+          poetry install
+
       - name: Generate latest terminal images with rich-codex
         if: matrix.session == 'docs-build'
         uses: ewels/rich-codex@v1
         with:
           commit_changes: "true"
-        run: |
-          poetry install
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
