@@ -76,14 +76,24 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
     nc_attrs = nc_file.ncattrs()
     cprint("[bold white]NetCDF Global Attributes:[/bold white]")
     for nc_attr in nc_attrs:
+        if any(
+            len(line) > width - 8
+            for line in str(nc_file.getncattr(nc_attr)).splitlines()
+        ):
+            lineend = (
+                " [italic white dim]4 spaces = new line; 8 spaces = line wrap[/italic"
+                " white dim]\n\t\t"
+            )
+        else:
+            lineend = " "
         try:
             if repr(nc_file.getncattr(nc_attr)[0]) != repr("\n"):
                 cprint(
-                    "\t[italic white]%s:[/italic white]" % nc_attr,
-                    "\n\t\t".join(
+                    f"\t[italic white]{nc_attr}:[/italic white]{lineend}"
+                    + "\n\t\t".join(
                         [
                             textwrap.fill(
-                                line,
+                                " ".join(line.split()),
                                 width=width - 8,
                                 tabsize=4,
                                 break_long_words=False,
@@ -96,11 +106,11 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
                 )
             else:
                 cprint(
-                    "\t[italic white]%s:[/italic white]" % nc_attr,
-                    "\n\t\t".join(
+                    f"\t[italic white]{nc_attr}:[/italic white]{lineend}"
+                    + "\n\t\t".join(
                         [
                             textwrap.fill(
-                                line,
+                                " ".join(line.split()),
                                 width=width - 8,
                                 tabsize=4,
                                 break_long_words=False,
@@ -114,7 +124,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
         except IndexError:
             cprint("\t[italic white]%s:[/italic white] [red]empty[/red]" % nc_attr)
     nc_dims = list(nc_file.dimensions)
-    cprint("[bold white]NetCDF dimension information:[/bold white]")
+    cprint("[bold white]NetCDF Dimension Information:[/bold white]")
     for dim in nc_dims:
         cprint("\t[italic white]Name:[/italic white]", dim)
         cprint("\t\t[italic white]size:[/italic white]", len(nc_file.dimensions[dim]))
@@ -122,7 +132,7 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
 
     # Variable information.
     nc_vars = list(nc_file.variables)  # list of nc variables
-    cprint("[bold white]NetCDF variable information:[/bold white]")
+    cprint("[bold white]NetCDF Variable Information:[/bold white]")
     if long:
         for var in nc_vars:
             if var not in nc_dims:
