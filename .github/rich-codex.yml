@@ -2,5 +2,4 @@ outputs:
   - command: "poetry run ncdump-rich ./demo/example.nc"
     title: Latest Rich NcDump
     img_paths:
-      - ./docs/demo/latest.png
       - ./demo/latest.png

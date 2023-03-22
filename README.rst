@@ -81,7 +81,7 @@ Usage
 
 Please see the `Command-line Reference <Usage_>`_ for details.
 
-.. image:: ./demo/latest.png
+.. image:: https://raw.githubusercontent.com/engeir/ncdump-rich/example-image/latest.png
    :width: 600
 
 Examples
