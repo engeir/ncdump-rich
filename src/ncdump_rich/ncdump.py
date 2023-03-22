@@ -80,7 +80,10 @@ def ncdump(src_path: str, long: bool = False, truecolor: bool = True) -> None:
             len(line) > width - 8
             for line in str(nc_file.getncattr(nc_attr)).splitlines()
         ):
-            lineend = " [italic white dim]4 spaces = new line; 8 spaces = line wrap[/italic white dim]\n\t\t"
+            lineend = (
+                " [italic white dim]4 spaces = new line; 8 spaces = line wrap[/italic"
+                " white dim]\n\t\t"
+            )
         else:
             lineend = " "
         try:
