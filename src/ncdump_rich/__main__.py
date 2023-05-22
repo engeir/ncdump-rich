@@ -3,6 +3,7 @@ import sys
 
 import rich_click as click
 from rich import print as rprint
+from trogon import tui
 
 import ncdump_rich.ncdump as ncd
 from ncdump_rich import __version__
@@ -13,6 +14,7 @@ click.rich_click.SHOW_ARGUMENTS = True
 # click.rich_click.GROUP_ARGUMENTS_OPTIONS = True
 
 
+@tui()
 @click.command()
 @click.version_option(version=__version__)
 @click.argument("filename", type=click.Path(exists=True, readable=True), required=True)

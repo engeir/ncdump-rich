@@ -26,6 +26,7 @@ netCDF4 = "^1.5.7"
 rich = ">=10.7,<14.0"
 rich-click = "^1.5.2"
 importlib-metadata = ">=4.12,<7.0"
+trogon = "^0.2.1"
 
 [tool.poetry.scripts]
 ncdump-rich = "ncdump_rich.__main__:main"
