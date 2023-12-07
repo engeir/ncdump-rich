@@ -2,6 +2,7 @@
 import netCDF4
 import pytest
 from click.testing import CliRunner
+
 from ncdump_rich import __main__
 
 

@@ -83,7 +83,6 @@ pretty = true
 show_column_numbers = true
 show_error_codes = true
 show_error_context = true
-strict = true
 strict_equality = true
 strict_optional = true
 warn_no_return = true
@@ -180,11 +179,10 @@ docstring-quotes = "double"
 numpy = "np"
 scipy = "sp"
 xarray = "xr"
-paper1_code = "core"
 
 [tool.ruff.isort]
 case-sensitive = true
-known-local-folder = ["src", "paper1_code"]
+known-local-folder = ["src", "ncdump_rich"]
 
 [tool.isort]
 multi_line_output = 3
