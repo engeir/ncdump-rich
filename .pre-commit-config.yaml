@@ -11,14 +11,14 @@ repos:
         name: ruff_format
         stages: [commit]
         language: system
-        entry: poetry run ruff format src tests
+        entry: poetry run ruff format src tests docs
         types: [python]
 
       - id: ruff
         name: ruff
         stages: [commit]
         language: system
-        entry: poetry run ruff --fix src tests
+        entry: poetry run ruff --fix src tests docs
         types: [python]
 
       - id: xdoctest
@@ -32,7 +32,7 @@ repos:
         name: pydocstringformatter
         stages: [commit]
         language: system
-        entry: poetry run pydocstringformatter src tests
+        entry: poetry run pydocstringformatter src tests docs
         types: [python]
 
       - id: mypy
@@ -47,7 +47,7 @@ repos:
         name: pydoclint
         stages: [commit]
         language: system
-        entry: poetry run pydoclint src tests
+        entry: poetry run pydoclint src tests docs
         types: [python]
         require_serial: true
 
