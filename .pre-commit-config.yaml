@@ -1,50 +1,90 @@
 repos:
   - repo: local
     hooks:
-      - id: black
-        name: black
-        entry: black
-        language: system
-        types: [python]
-        require_serial: true
       - id: check-added-large-files
         name: Check for added large files
+        stages: [commit]
         entry: check-added-large-files
         language: system
+
+      - id: ruff_format
+        name: ruff_format
+        stages: [commit]
+        language: system
+        entry: poetry run ruff format src tests
+        types: [python]
+
+      - id: ruff
+        name: ruff
+        stages: [commit]
+        language: system
+        entry: poetry run ruff --fix src tests
+        types: [python]
+
+      - id: xdoctest
+        name: xdoctest
+        stages: [commit]
+        language: system
+        entry: poetry run xdoctest
+        types: [python]
+
+      - id: pydocstringformatter
+        name: pydocstringformatter
+        stages: [commit]
+        language: system
+        entry: poetry run pydocstringformatter src tests
+        types: [python]
+
+      - id: mypy
+        name: mypy
+        stages: [commit]
+        language: system
+        entry: poetry run mypy
+        types: [python]
+        require_serial: true
+
+      - id: pydoclint
+        name: pydoclint
+        stages: [commit]
+        language: system
+        entry: poetry run pydoclint src tests
+        types: [python]
+        require_serial: true
+
+      - id: pytest
+        name: pytest
+        stages: [commit]
+        language: system
+        entry: poetry run pytest tests
+        types: [python]
+        pass_filenames: false
+
       - id: check-toml
         name: Check Toml
         entry: check-toml
         language: system
         types: [toml]
+
       - id: check-yaml
         name: Check Yaml
         entry: check-yaml
         language: system
         types: [yaml]
+
       - id: end-of-file-fixer
         name: Fix End of Files
         entry: end-of-file-fixer
         language: system
         types: [text]
         stages: [commit, push, manual]
-      - id: flake8
-        name: flake8
-        entry: flake8
-        language: system
-        types: [python]
-        require_serial: true
-      - id: reorder-python-imports
-        name: Reorder python imports
-        entry: reorder-python-imports
-        language: system
-        types: [python]
-        args: [--application-directories=src]
+
       - id: trailing-whitespace
         name: Trim Trailing Whitespace
         entry: trailing-whitespace-fixer
         language: system
         types: [text]
         stages: [commit, push, manual]
+
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v2.3.0
     hooks:

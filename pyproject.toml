@@ -30,29 +30,27 @@ importlib-metadata = ">=4.12,<7.0"
 ncdump-rich = "ncdump_rich.__main__:main"
 
 [tool.poetry.group.dev.dependencies]
-safety = "^2.1.1"
 pytest = "^7.1.2"
 coverage = {extras = ["toml"], version = "^6.4"}
-mypy = "^0.960"
 typeguard = "^2.13.2"
 xdoctest = {extras = ["colors"], version = "^1.0.0"}
 sphinx = "^4.5.0"
 sphinx-autobuild = "^2021.3.14"
 pre-commit = "^2.19.0"
-black = "^22.3"
-flake8-bandit = "^2.1.2"
-bandit = "1.7.2"
 flake8-bugbear = "^22.6.22"
 flake8-docstrings = "^1.6.0"
 flake8-rst-docstrings = "^0.2.3"
 pep8-naming = "^0.13.2"
-darglint = "^1.8.1"
-reorder-python-imports = "^3.1.0"
 pre-commit-hooks = "^4.2.0"
 sphinx-rtd-theme = "^1.0.0"
 sphinx-click = "^4.0.3"
 Pygments = "^2.11.2"
 pytest-cov = "^3.0.0"
+ruff = "^0.1.7"
+pydoclint = "^0.3.8"
+pydocstringformatter = "^0.7.3"
+pyupgrade = "^3.15.0"
+mypy = "^1.7.1"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
