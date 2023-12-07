@@ -1,5 +1,7 @@
 name: Rich-codex
 on: [push]
+permissions:
+  contents: write
 jobs:
   rich_codex:
     runs-on: ubuntu-latest
