@@ -7,7 +7,18 @@ from textwrap import dedent
 from typing import Any
 
 import nox
-from nox_poetry import Session, session
+
+try:
+    from nox_poetry import Session, session
+except ImportError as err:
+    message = f"""\
+    Nox failed to import the 'nox-poetry' package.
+
+    Please install it using the following command:
+
+    {sys.executable} -m pip install nox-poetry"""
+    raise SystemExit(dedent(message)) from err
+
 
 package = "ncdump_rich"
 python_versions = ["3.11", "3.10", "3.9"]
@@ -68,8 +79,8 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
     session : Session
         The Session object.
     """
-    if session.bin is None:
-        return
+    # if session.bin is None:
+    #     return
 
     virtualenv = session.env.get("VIRTUAL_ENV")
     if virtualenv is None:
