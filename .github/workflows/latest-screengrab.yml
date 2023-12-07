@@ -1,9 +1,6 @@
 name: Rich-codex
 on: [push]
 permissions:
-  pull-requests: write
-  issues: write
-  repository-projects: write
   contents: write
 jobs:
   rich_codex:
