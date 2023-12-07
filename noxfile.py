@@ -7,18 +7,7 @@ from textwrap import dedent
 from typing import Any
 
 import nox
-
-try:
-    from nox_poetry import Session, session
-except ImportError as err:
-    message = f"""\
-    Nox failed to import the 'nox-poetry' package.
-
-    Please install it using the following command:
-
-    {sys.executable} -m pip install nox-poetry"""
-    raise SystemExit(dedent(message)) from err
-
+from nox_poetry import Session, session
 
 package = "ncdump_rich"
 python_versions = ["3.11", "3.10", "3.9"]
