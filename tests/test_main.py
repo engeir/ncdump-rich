@@ -1,5 +1,5 @@
 """Test cases for the __main__ module."""
-import netCDF4  # type: ignore
+import netCDF4
 import pytest
 from click.testing import CliRunner
 
@@ -12,17 +12,22 @@ def runner() -> CliRunner:
     return CliRunner()
 
 
+def _make_ds() -> netCDF4.Dataset:
+    ds = netCDF4.Dataset("test.nc", mode="w", format="NETCDF4")
+    ds.description = "Example dataset"
+    ds.creator = "Example dataset"
+    _ = ds.createDimension("time", None)
+    _ = ds.createVariable("time", "f8", ("time",))
+    _ = ds.createDimension("lat", 10)
+    _ = ds.createDimension("lon", 10)
+    return ds
+
+
 def test_main_succeeds(runner: CliRunner) -> None:
     """It exits with a status code of zero."""
     with runner.isolated_filesystem():
         # Many variables
-        ds = netCDF4.Dataset("test.nc", mode="w", format="NETCDF4")
-        ds.description = "Example dataset"
-        ds.creator = "Example dataset"
-        _ = ds.createDimension("time", None)
-        _ = ds.createVariable("time", "f8", ("time",))
-        _ = ds.createDimension("lat", 10)
-        _ = ds.createDimension("lon", 10)
+        ds = _make_ds()
         for i in range(21):
             # fmt: off
             _ = ds.createVariable(f"{i}", "f4", ("time", "lat", "lon",),)[:] = [

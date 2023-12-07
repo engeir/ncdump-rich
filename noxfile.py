@@ -21,13 +21,12 @@ except ImportError as err:
 
 
 package = "ncdump_rich"
-python_versions = ["3.11", "3.10", "3.9", "3.8", "3.7"]
-nox.needs_version = ">= 2021.6.6"
+python_versions = ["3.11", "3.10", "3.9"]
+nox.needs_version = ">= 2023.4.22"
 nox.options.sessions = (
     "pre-commit",
-    # "safety",
     "mypy",
-    "black",
+    "ruff",
     "tests",
     "typeguard",
     "xdoctest",
@@ -46,11 +45,11 @@ def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> Non
 
     Parameters
     ----------
-    session: Session
+    session : Session
         The Session object.
-    args: str
+    *args : str
         Command-line arguments for pip.
-    kwargs: Any
+    **kwargs : Any
         Additional keyword arguments for Session.install.
     """
     with tempfile.NamedTemporaryFile() as requirements:
@@ -77,10 +76,11 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
 
     Parameters
     ----------
-    session: The Session object.
+    session : Session
+        The Session object.
     """
-    if session.bin is None:
-        return
+    # if session.bin is None:
+    #     return
 
     virtualenv = session.env.get("VIRTUAL_ENV")
     if virtualenv is None:
@@ -120,34 +120,24 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
         hook.write_text("\n".join(lines))
 
 
-@session(name="pre-commit", python="3.10")
+@session(name="pre-commit", python="3.11")
 def precommit(session: Session) -> None:
     """Lint using pre-commit."""
     args = session.posargs or ["run", "--all-files", "--show-diff-on-failure"]
     session.install(
-        "black",
-        "darglint",
-        "flake8",
-        "flake8-bandit",
-        "flake8-bugbear",
-        "flake8-docstrings",
-        "flake8-rst-docstrings",
-        "pep8-naming",
+        "ruff",
+        "pydoclint",
+        "mypy",
+        "pytest",
+        "pydocstringformatter",
         "pre-commit",
         "pre-commit-hooks",
-        "reorder-python-imports",
+        "xdoctest",
     )
+    session.install(".")
     session.run("pre-commit", *args)
     if args and args[0] == "install":
         activate_virtualenv_in_precommit_hooks(session)
-
-
-# @session(python="3.10")
-# def safety(session: Session) -> None:
-#     """Scan dependencies for insecure packages."""
-#     requirements = session.poetry.export_requirements()
-#     session.install("safety")
-#     session.run("safety", "check", "--full-report", f"--file={requirements}")
 
 
 @session(python=python_versions)
@@ -162,11 +152,11 @@ def mypy(session: Session) -> None:
 
 
 @session(python=python_versions)
-def black(session: Session) -> None:
-    """Format using black."""
+def ruff(session: Session) -> None:
+    """Format using ruff."""
     args = session.posargs or ["src", "tests", "docs/conf.py"]
-    session.install("black")
-    session.run("black", *args)
+    session.install("ruff")
+    session.run("ruff", *args)
 
 
 @session(python=python_versions)
@@ -181,7 +171,7 @@ def tests(session: Session) -> None:
             session.notify("coverage", posargs=[])
 
 
-@session(python="3.10")
+@session(python="3.11")
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
     install_with_constraints(session, "coverage[toml]", "codecov")
@@ -208,7 +198,7 @@ def xdoctest(session: Session) -> None:
     session.run("python", "-m", "xdoctest", package, *args)
 
 
-@session(name="docs-build", python="3.10")
+@session(name="docs-build", python="3.11")
 def docs_build(session: Session) -> None:
     """Build the documentation."""
     args = session.posargs or ["docs", "docs/_build"]
@@ -222,7 +212,7 @@ def docs_build(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@session(python="3.10")
+@session(python="3.11")
 def docs(session: Session) -> None:
     """Build and serve the documentation with live reloading on file changes."""
     args = session.posargs or ["--open-browser", "docs", "docs/_build"]
