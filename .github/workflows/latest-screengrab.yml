@@ -1,5 +1,9 @@
 name: Rich-codex
 on: [push]
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
 jobs:
   rich_codex:
     runs-on: ubuntu-latest
