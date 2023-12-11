@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
       - name: Upgrade pip
         run: |
@@ -50,6 +50,14 @@ jobs:
           poetry version patch &&
           version=$(poetry version | awk '{ print $2 }') &&
           poetry version $version.dev.$(date +%s)
+
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v2
+        with:
+          config: pyproject.toml
+          args: --verbose
+        env:
+          OUTPUT: CHANGELOG.md
 
       - name: Build package
         run: |
