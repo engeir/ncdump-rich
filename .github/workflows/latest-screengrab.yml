@@ -29,6 +29,7 @@ jobs:
         uses: ewels/rich-codex@v1
         with:
           commit_changes: "false"
+          skip_git_checks: "true"
           clean_img_paths: |
             ./demo/latest.png
 
