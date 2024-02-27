@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file.
 - Bump pre-commit-hooks from 4.3.0 to 4.4.0 ([#309](https://github.com/engeir/ncdump-rich/issues/309)) // (GitHub <noreply@github.com> 2023-12-07)
 - Bump pre-commit from 2.20.0 to 2.21.0 ([#308](https://github.com/engeir/ncdump-rich/issues/308)) // (GitHub <noreply@github.com> 2023-12-07)
 - Bump release-drafter/release-drafter from 5.22.0 to 5.25.0 ([#359](https://github.com/engeir/ncdump-rich/issues/359)) // (GitHub <noreply@github.com> 2023-12-07)
+- Change to use Rye over Poetry ([#388](https://github.com/engeir/ncdump-rich/issues/388)) // (GitHub <noreply@github.com> 2024-02-27)
 
 ## [0.4.0] - 2023-12-07
 
