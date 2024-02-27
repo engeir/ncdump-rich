@@ -79,7 +79,7 @@ jobs:
         run: |
           source "$HOME/.rye/env"
           rye version -b patch &&
-          version=$(rye version | awk '{ print $2 }') &&
+          version=$(rye version) &&
           rye version $version.dev.$(date +%s)
 
       - name: Build package
