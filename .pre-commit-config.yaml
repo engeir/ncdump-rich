@@ -14,35 +14,35 @@ repos:
         name: ruff_format
         stages: [commit]
         language: system
-        entry: rye run ruff format src tests docs
+        entry: ruff format src tests docs
         types: [python]
 
       - id: ruff
         name: ruff
         stages: [commit]
         language: system
-        entry: rye run ruff --fix src tests docs
+        entry: ruff --fix src tests docs
         types: [python]
 
       - id: xdoctest
         name: xdoctest
         stages: [commit]
         language: system
-        entry: rye run xdoctest
+        entry: xdoctest
         types: [python]
 
       - id: pydocstringformatter
         name: pydocstringformatter
         stages: [commit]
         language: system
-        entry: rye run pydocstringformatter src tests docs
+        entry: pydocstringformatter src tests docs
         types: [python]
 
       - id: mypy
         name: mypy
         stages: [commit]
         language: system
-        entry: rye run mypy
+        entry: mypy
         types: [python]
         require_serial: true
 
@@ -50,7 +50,7 @@ repos:
         name: pydoclint
         stages: [commit]
         language: system
-        entry: rye run pydoclint src tests docs
+        entry: pydoclint src tests docs
         types: [python]
         require_serial: true
 
@@ -58,7 +58,7 @@ repos:
         name: pytest
         stages: [commit]
         language: system
-        entry: rye run pytest tests
+        entry: pytest tests
         types: [python]
         pass_filenames: false
 
