@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
+- Remove awk command in version parse // (GitHub <noreply@github.com> 2024-02-27)
+
+### Build
+
+- Bump pypa/gh-action-pypi-publish from 1.6.4 to 1.8.12 ([#387](https://github.com/engeir/ncdump-rich/issues/387)) // (GitHub <noreply@github.com> 2024-02-27)
+
+## [0.5.2] - 2024-02-27
+
+### Bug Fixes
+
 - Upload git-cliff changelog // (engeir <engeir@pm.me> 2023-12-11)
 - Release fails at version command ([#389](https://github.com/engeir/ncdump-rich/issues/389)) // (GitHub <noreply@github.com> 2024-02-27)
 - Release workflow, rye version and poetry version differs ([#390](https://github.com/engeir/ncdump-rich/issues/390)) // (GitHub <noreply@github.com> 2024-02-27)
