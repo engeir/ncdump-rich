@@ -14,19 +14,22 @@ jobs:
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
 
-      - name: Install Poetry
+      - name: Install Rye
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt poetry
-          poetry --version
+          curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+          source "$HOME/.rye/env"
+          rye --version
 
       - name: Install project to generate image
         run: |
-          poetry install
+          source "$HOME/.rye/env"
+          rye sync -f
 
       - name: Generate latest terminal images with rich-codex
         uses: ewels/rich-codex@v1
         with:
           commit_changes: "false"
+          skip_git_checks: "true"
           clean_img_paths: |
             ./demo/latest.png
 

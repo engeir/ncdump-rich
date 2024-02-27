@@ -1,5 +1,5 @@
 outputs:
-  - command: "poetry run ncdump-rich ./demo/example.nc"
+  - command: "rye run ncdump-rich ./demo/example.nc"
     title: Latest Rich NcDump
     img_paths:
       - ./demo/latest.png

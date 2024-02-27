@@ -1,45 +1,48 @@
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-added-large-files
+      - id: check-toml
+
   - repo: local
     hooks:
-      - id: check-added-large-files
-        name: Check for added large files
-        stages: [commit]
-        entry: check-added-large-files
-        language: system
-
       - id: ruff_format
         name: ruff_format
         stages: [commit]
         language: system
-        entry: poetry run ruff format src tests docs
+        entry: ruff format src tests docs
         types: [python]
 
       - id: ruff
         name: ruff
         stages: [commit]
         language: system
-        entry: poetry run ruff --fix src tests docs
+        entry: ruff --fix src tests docs
         types: [python]
 
       - id: xdoctest
         name: xdoctest
         stages: [commit]
         language: system
-        entry: poetry run xdoctest
+        entry: xdoctest
         types: [python]
 
       - id: pydocstringformatter
         name: pydocstringformatter
         stages: [commit]
         language: system
-        entry: poetry run pydocstringformatter src tests docs
+        entry: pydocstringformatter src tests docs
         types: [python]
 
       - id: mypy
         name: mypy
         stages: [commit]
         language: system
-        entry: poetry run mypy
+        entry: mypy
         types: [python]
         require_serial: true
 
@@ -47,7 +50,7 @@ repos:
         name: pydoclint
         stages: [commit]
         language: system
-        entry: poetry run pydoclint src tests docs
+        entry: pydoclint src tests docs
         types: [python]
         require_serial: true
 
@@ -55,35 +58,9 @@ repos:
         name: pytest
         stages: [commit]
         language: system
-        entry: poetry run pytest tests
+        entry: pytest tests
         types: [python]
         pass_filenames: false
-
-      - id: check-toml
-        name: Check Toml
-        entry: check-toml
-        language: system
-        types: [toml]
-
-      - id: check-yaml
-        name: Check Yaml
-        entry: check-yaml
-        language: system
-        types: [yaml]
-
-      - id: end-of-file-fixer
-        name: Fix End of Files
-        entry: end-of-file-fixer
-        language: system
-        types: [text]
-        stages: [commit, push, manual]
-
-      - id: trailing-whitespace
-        name: Trim Trailing Whitespace
-        entry: trailing-whitespace-fixer
-        language: system
-        types: [text]
-        stages: [commit, push, manual]
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v2.3.0
