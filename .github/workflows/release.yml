@@ -72,7 +72,7 @@ jobs:
         uses: salsify/action-detect-and-tag-new-version@v2.0.3
         with:
           version-command: |
-            source "$HOME/.rye/env" && bash -o pipefail -c "rye version | awk '{ print \$2 }'"
+            bash -o pipefail -c "source $HOME/.rye/env && rye version | awk '{ print \$2 }'"
 
       - name: Bump version for developmental release
         if: "! steps.check-version.outputs.tag"

@@ -1,5 +1,5 @@
 outputs:
-  - command: "source $HOME/.rye/env && rye run ncdump-rich ./demo/example.nc"
+  - command: bash -c "source $HOME/.rye/env && rye run ncdump-rich ./demo/example.nc"
     title: Latest Rich NcDump
     img_paths:
       - ./demo/latest.png
