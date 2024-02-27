@@ -1,56 +1,57 @@
-[tool.poetry]
+[project]
 name = "ncdump-rich"
-version = "0.4.0"
+version = "0.5.0"
 description = "Rich NcDump"
-authors = ["Eirik Enger <eirroleng@gmail.com>"]
+authors = [{ name = "Eirik Enger", email = "engeir@pm.me" }]
 license = "GPL-3.0"
 readme = "README.rst"
-homepage = "https://github.com/engeir/ncdump-rich"
-repository = "https://github.com/engeir/ncdump-rich"
-documentation = "https://ncdump-rich.readthedocs.io"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "click>=8.1.7",
+    "netcdf4>=1.6.5",
+    "rich>=13.7.0",
+    "rich-click>=1.7.3",
 ]
 
-[tool.poetry.urls]
-Changelog = "https://github.com/engeir/ncdump-rich/releases"
+[project.urls]
+changelog = "https://github.com/engeir/ncdump-rich/releases"
+homepage = "https://github.com/engeir/ncdump-rich"
+repository = "https://github.com/engeir/ncdump-rich"
+documentation = "https://ncdump-rich.readthedocs.io"
 
-[tool.poetry.dependencies]
-python = ">=3.9,<3.12"
-click = "^8.0.1"
-netCDF4 = "^1.5.7"
-rich = ">=10.7,<14.0"
-rich-click = "^1.5.2"
-importlib-metadata = ">=4.12,<7.0"
-
-[tool.poetry.scripts]
+[project.scripts]
 ncdump-rich = "ncdump_rich.__main__:main"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.1.2"
-coverage = { extras = ["toml"], version = "^6.4" }
-typeguard = "^2.13.2"
-xdoctest = { extras = ["colors"], version = "^1.0.0" }
-sphinx = "^4.5.0"
-sphinx-autobuild = "^2021.3.14"
-pre-commit = "^2.19.0"
-flake8-bugbear = "^22.6.22"
-flake8-docstrings = "^1.6.0"
-flake8-rst-docstrings = "^0.2.3"
-pep8-naming = "^0.13.2"
-pre-commit-hooks = "^4.2.0"
-sphinx-rtd-theme = "^1.0.0"
-sphinx-click = "^4.0.3"
-Pygments = "^2.11.2"
-pytest-cov = "^3.0.0"
-ruff = "^0.1.7"
-pydoclint = "^0.3.8"
-pydocstringformatter = "^0.7.3"
-pyupgrade = "^3.15.0"
-mypy = "^1.7.1"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool]
+rye = { dev-dependencies = [
+    "coverage>=7.4.3",
+    "mypy>=1.8.0",
+    "pre-commit>=3.6.2",
+    "pre-commit-hooks>=4.5.0",
+    "pydoclint>=0.4.1",
+    "pydocstringformatter>=0.7.3",
+    "pygments>=2.17.2",
+    "pytest>=8.0.2",
+    "pytest-cov>=4.1.0",
+    "pyupgrade>=3.15.1",
+    "ruff>=0.2.2",
+    "sphinx>=7.2.6",
+    "sphinx-autobuild>=2024.2.4",
+    "sphinx-click>=5.1.0",
+    "sphinx-rtd-theme>=2.0.0",
+    "typeguard>=4.1.5",
+    "xdoctest>=1.1.3",
+] }
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -65,10 +66,6 @@ fail_under = 100
 
 [tool.coverage.html]
 directory = "htmlcov"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.git-cliff.changelog]
 # git-cliff ~ default configuration file
@@ -174,6 +171,42 @@ warn_unused_configs = true
 warn_unused_ignores = true
 
 [tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".git-rewrite",
+  ".hg",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "venv",
+]
+
+# Same as Black.
+line-length = 88
+
+# Assume Python 3.12
+target-version = "py312"
+
+[tool.ruff.lint]
+per-file-ignores = {}
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
 select = [ # https://docs.astral.sh/ruff/rules/
   "B",  # flake8-bugbear
   "D",  # pydocstyle
@@ -212,57 +245,22 @@ ignore = [
 fixable = ["ALL"]
 unfixable = []
 
-# Exclude a variety of commonly ignored directories.
-exclude = [
-  ".bzr",
-  ".direnv",
-  ".eggs",
-  ".git",
-  ".git-rewrite",
-  ".hg",
-  ".mypy_cache",
-  ".nox",
-  ".pants.d",
-  ".pytype",
-  ".ruff_cache",
-  ".svn",
-  ".tox",
-  ".venv",
-  "__pypackages__",
-  "_build",
-  "buck-out",
-  "build",
-  "dist",
-  "node_modules",
-  "venv",
-]
-per-file-ignores = {}
-
-# Same as Black.
-line-length = 88
-
-# Allow unused variables when underscore-prefixed.
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-
-# Assume Python 3.11
-target-version = "py311"
-
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "numpy"
 ignore-decorators = ["typing.overload"]
 
-[tool.ruff.flake8-quotes]
+[tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
 
-[tool.ruff.flake8-import-conventions]
-[tool.ruff.flake8-import-conventions.aliases]
+[tool.ruff.lint.flake8-import-conventions]
+[tool.ruff.lint.flake8-import-conventions.aliases]
 # Declare the default aliases.
 "matplotlib.pyplot" = "plt"
 numpy = "np"
 scipy = "sp"
 xarray = "xr"
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 case-sensitive = true
 known-local-folder = ["src", "ncdump_rich"]
 
