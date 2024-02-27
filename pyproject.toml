@@ -1,6 +1,6 @@
 [project]
 name = "ncdump-rich"
-version = "0.5.1"
+version = "0.5.2"
 description = "Rich NcDump"
 authors = [{ name = "Eirik Enger", email = "engeir@pm.me" }]
 license = "GPL-3.0"
