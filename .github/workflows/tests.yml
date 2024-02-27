@@ -19,6 +19,7 @@ jobs:
           - { python-version: "3.11", os: ubuntu-latest, session: "mypy" }
           - { python-version: "3.11", os: ubuntu-latest, session: "tests" }
           - { python-version: "3.12", os: ubuntu-latest, session: "mypy" }
+          - { python-version: "3.12", os: ubuntu-latest, session: "ruff" }
           - { python-version: "3.12", os: ubuntu-latest, session: "tests" }
           - { python-version: "3.12", os: macos-latest, session: "tests" }
           # - { python-version: "3.12", os: windows-latest, session: "tests" }

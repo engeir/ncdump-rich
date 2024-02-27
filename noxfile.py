@@ -79,6 +79,7 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
 def precommit(session: Session) -> None:
     """Lint using pre-commit."""
     args = session.posargs or ["run", "--all-files", "--show-diff-on-failure"]
+    session.install(".")
     session.install(
         "ruff",
         "pydoclint",
@@ -89,7 +90,6 @@ def precommit(session: Session) -> None:
         "pre-commit-hooks",
         "xdoctest",
     )
-    session.install(".")
     session.run("pre-commit", *args)
     if args and args[0] == "install":
         activate_virtualenv_in_precommit_hooks(session)
