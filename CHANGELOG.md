@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Bug Fixes
 
 - Upload git-cliff changelog // (engeir <engeir@pm.me> 2023-12-11)
+- Release fails at version command ([#389](https://github.com/engeir/ncdump-rich/issues/389)) // (GitHub <noreply@github.com> 2024-02-27)
 
 ### Documentation
 
