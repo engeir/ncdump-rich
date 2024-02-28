@@ -3,8 +3,9 @@ name = "ncdump-rich"
 version = "0.5.2"
 description = "Rich NcDump"
 authors = [{ name = "Eirik Enger", email = "engeir@pm.me" }]
-license = "GPL-3.0"
+license = { file = "LICENSE.rst" }
 readme = "README.rst"
+requires-python = ">=3.9"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Programming Language :: Python :: 3.9",
@@ -13,17 +14,18 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "click>=8.1.7",
-    "netcdf4>=1.6.5",
-    "rich>=13.7.0",
-    "rich-click>=1.7.3",
+  "click>=8.1.7",
+  "netcdf4>=1.6.5",
+  "rich>=13.7.0",
+  "rich-click>=1.7.3",
 ]
 
 [project.urls]
-changelog = "https://github.com/engeir/ncdump-rich/releases"
+"release notes" = "https://github.com/engeir/ncdump-rich/releases"
 homepage = "https://github.com/engeir/ncdump-rich"
-repository = "https://github.com/engeir/ncdump-rich"
+source = "https://github.com/engeir/ncdump-rich"
 documentation = "https://ncdump-rich.readthedocs.io"
+tracker = "https://github.com/engeir/ncdump-rich/issues"
 
 [project.scripts]
 ncdump-rich = "ncdump_rich.__main__:main"
@@ -34,23 +36,23 @@ build-backend = "hatchling.build"
 
 [tool]
 rye = { dev-dependencies = [
-    "coverage>=7.4.3",
-    "mypy>=1.8.0",
-    "pre-commit>=3.6.2",
-    "pre-commit-hooks>=4.5.0",
-    "pydoclint>=0.4.1",
-    "pydocstringformatter>=0.7.3",
-    "pygments>=2.17.2",
-    "pytest>=8.0.2",
-    "pytest-cov>=4.1.0",
-    "pyupgrade>=3.15.1",
-    "ruff>=0.2.2",
-    "sphinx>=7.2.6",
-    "sphinx-autobuild>=2024.2.4",
-    "sphinx-click>=5.1.0",
-    "sphinx-rtd-theme>=2.0.0",
-    "typeguard>=4.1.5",
-    "xdoctest>=1.1.3",
+  "coverage>=7.4.3",
+  "mypy>=1.8.0",
+  "pre-commit>=3.6.2",
+  "pre-commit-hooks>=4.5.0",
+  "pydoclint>=0.4.1",
+  "pydocstringformatter>=0.7.3",
+  "pygments>=2.17.2",
+  "pytest>=8.0.2",
+  "pytest-cov>=4.1.0",
+  "pyupgrade>=3.15.1",
+  "ruff>=0.2.2",
+  "sphinx>=7.2.6",
+  "sphinx-autobuild>=2024.2.4",
+  "sphinx-click>=5.1.0",
+  "sphinx-rtd-theme>=2.0.0",
+  "typeguard>=4.1.5",
+  "xdoctest>=1.1.3",
 ] }
 
 [tool.coverage.paths]
