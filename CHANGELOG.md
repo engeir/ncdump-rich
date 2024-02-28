@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - Remove awk command in version parse // (GitHub <noreply@github.com> 2024-02-27)
 
+### Documentation
+
+- Update metadata ([#395](https://github.com/engeir/ncdump-rich/issues/395)) // (GitHub <noreply@github.com> 2024-02-28)
+
 ### Build
 
 - Bump pypa/gh-action-pypi-publish from 1.6.4 to 1.8.12 ([#387](https://github.com/engeir/ncdump-rich/issues/387)) // (GitHub <noreply@github.com> 2024-02-27)
