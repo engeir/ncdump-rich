@@ -43,29 +43,35 @@ Request features on the `Issue Tracker`_.
 How to set up your development environment
 ------------------------------------------
 
-You need Python 3.6+ and the following tools:
+You need Python 3.9+ and the following tools:
 
-- Poetry_
+- Rye_
 - Nox_
-- nox-poetry_
 
 Install the package with development requirements:
 
 .. code:: console
 
-   $ poetry install
+   $ rye sync
 
 You can now run an interactive Python session,
 or the command-line interface:
 
 .. code:: console
 
-   $ poetry run python
-   $ poetry run ncdump-rich
+   $ rye run python
+   $ rye run ncdump-rich
 
-.. _Poetry: https://python-poetry.org/
+Additionally, you can use Mise_ to manage and automatically activate your virtual
+environment by running:
+
+.. code:: console
+
+   $ mise set MISE_ENV=development
+
+.. _Rye: https://rye-up.com/
 .. _Nox: https://nox.thea.codes/
-.. _nox-poetry: https://nox-poetry.readthedocs.io/
+.. _Mise: https://mise.jdx.dev/
 
 
 How to test the project
