@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 ### Build
 
 - Bump pypa/gh-action-pypi-publish from 1.6.4 to 1.8.12 ([#387](https://github.com/engeir/ncdump-rich/issues/387)) // (GitHub <noreply@github.com> 2024-02-27)
+- Set up optional mise dev environment // (engeir <engeir@pm.me> 2024-03-11)
 
 ## [0.5.2] - 2024-02-27
 
