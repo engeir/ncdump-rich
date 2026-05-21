@@ -28,6 +28,7 @@ All notable changes to this project will be documented in this file.
 - Bump python version // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 - Dont format CHANGELOG // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 - Use python3.14 // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
+- Use only the semver version in UV output // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 
 ### Revert
 
