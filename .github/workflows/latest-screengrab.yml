@@ -33,7 +33,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git commit -m 'deploy'
       - name: Force push to destination branch
-        uses: ad-m/github-push-action@v1.1.0
+        uses: ad-m/github-push-action@4cc74773234f74829a8c21bc4d69dd4be9cfa599 # v1.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: example-image
