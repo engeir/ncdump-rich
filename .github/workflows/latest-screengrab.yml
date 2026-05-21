@@ -16,7 +16,7 @@ jobs:
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       - name: Install project to generate image
         run: |
-          uv sync -f
+          uv sync
       - name: Generate latest terminal images with rich-codex
         uses: ewels/rich-codex@80de9de011c994f32274bb4cffee140567621d8e # v1.2.11
         with:
