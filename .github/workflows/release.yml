@@ -1,20 +1,17 @@
 name: Release
-
 on:
   push:
     branches:
       - main
-
 jobs:
   changelog:
     name: Generate changelog
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
-
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v2
         id: git-cliff
@@ -23,10 +20,8 @@ jobs:
           args: --verbose
         env:
           OUTPUT: CHANGELOG.md
-
       - name: Print the changelog
         run: cat "${{ steps.git-cliff.outputs.changelog }}"
-
       - name: Commit
         run: |
           git config user.name 'github-actions[bot]'
@@ -35,65 +30,50 @@ jobs:
           git add CHANGELOG.md
           git commit -m "Update changelog"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git main
-
   release:
     name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.12"
-
       - name: Upgrade pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
-
-      - name: Install Rye
-        run: |
-          curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
-          source "$HOME/.rye/env"
-          rye --version
-
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       - name: Check if there is a parent commit
         id: check-parent-commit
         run: |
           echo "::set-output name=sha::$(git rev-parse --verify --quiet HEAD^)"
-
       - name: Detect and tag new version
         id: check-version
         if: steps.check-parent-commit.outputs.sha
         uses: salsify/action-detect-and-tag-new-version@v2.0.3
         with:
           version-command: |
-            bash -o pipefail -c "source $HOME/.rye/env && rye version"
-
+            uv version
       - name: Bump version for developmental release
         if: "! steps.check-version.outputs.tag"
         run: |
-          source "$HOME/.rye/env"
-          rye version -b patch &&
-          version=$(rye version) &&
-          rye version $version.dev.$(date +%s)
-
+          uv version --bump patch &&
+          version=$(uv version | cut -d" " -f2) &&
+          uv version $version.dev.$(date +%s)
       - name: Build package
         run: |
-          source "$HOME/.rye/env"
-          rye build
-
+          uv build
       - name: Publish package on PyPI
         if: steps.check-version.outputs.tag
         uses: pypa/gh-action-pypi-publish@v1.8.12
         with:
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
-
       - name: Publish package on TestPyPI
         if: "! steps.check-version.outputs.tag"
         uses: pypa/gh-action-pypi-publish@v1.8.12
@@ -101,7 +81,6 @@ jobs:
           user: __token__
           password: ${{ secrets.TEST_PYPI_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
-
       - name: Publish the release notes
         uses: release-drafter/release-drafter@v5.25.0
         with:

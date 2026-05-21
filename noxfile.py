@@ -9,7 +9,7 @@ import nox
 from nox import Session, session
 
 package = "ncdump_rich"
-python_versions = ["3.12", "3.11", "3.10", "3.9"]
+python_versions = ["3.14", "3.13", "3.12", "3.11", "3.10"]
 nox.needs_version = ">= 2023.4.22"
 nox.options.sessions = (
     "pre-commit",
@@ -109,7 +109,7 @@ def mypy(session: Session) -> None:
 @session(python=python_versions)
 def ruff(session: Session) -> None:
     """Format using ruff."""
-    args = session.posargs or ["src", "tests", "docs/conf.py"]
+    args = session.posargs or ["check", "src", "tests", "docs/conf.py"]
     session.install("ruff")
     session.run("ruff", *args)
 

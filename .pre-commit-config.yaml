@@ -12,35 +12,35 @@ repos:
     hooks:
       - id: ruff_format
         name: ruff_format
-        stages: [commit]
+        stages: [pre-commit]
         language: system
         entry: ruff format src tests docs
         types: [python]
 
       - id: ruff
         name: ruff
-        stages: [commit]
+        stages: [pre-commit]
         language: system
-        entry: ruff --fix src tests docs
+        entry: ruff check --fix src tests docs
         types: [python]
 
       - id: xdoctest
         name: xdoctest
-        stages: [commit]
+        stages: [pre-commit]
         language: system
         entry: xdoctest
         types: [python]
 
       - id: pydocstringformatter
         name: pydocstringformatter
-        stages: [commit]
+        stages: [pre-commit]
         language: system
         entry: pydocstringformatter src tests docs
         types: [python]
 
       - id: mypy
         name: mypy
-        stages: [commit]
+        stages: [pre-commit]
         language: system
         entry: mypy
         types: [python]
@@ -48,7 +48,7 @@ repos:
 
       - id: pydoclint
         name: pydoclint
-        stages: [commit]
+        stages: [pre-commit]
         language: system
         entry: pydoclint src tests docs
         types: [python]
@@ -56,7 +56,7 @@ repos:
 
       - id: pytest
         name: pytest
-        stages: [commit]
+        stages: [pre-commit]
         language: system
         entry: pytest tests
         types: [python]

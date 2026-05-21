@@ -1,4 +1,5 @@
 """Test cases for the __main__ module."""
+
 import netCDF4
 import pytest
 from click.testing import CliRunner
@@ -42,6 +43,7 @@ def test_main_succeeds(runner: CliRunner) -> None:
         ncfile.title = ""
         ncfile.description = "Example dataset"
         ncfile.creator = "\n"
+        ncfile.value = 42
         lat_dim = ncfile.createDimension("lat", 73)  # latitude axis
         lon_dim = ncfile.createDimension("lon", 144)  # longitude axis
         _ = ncfile.createDimension("novar")  # KeyError: No variable information
