@@ -47,6 +47,7 @@ All notable changes to this project will be documented in this file.
 - Swap to uv over old rye // (GitHub <noreply@github.com> 2026-05-21)
 - Bump version // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 - Bump version // (GitHub <noreply@github.com> 2026-05-21)
+- Bump version // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 
 ## [0.5.2] - 2024-02-27
 
