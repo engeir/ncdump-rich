@@ -9,7 +9,7 @@ import nox
 from nox import Session, session
 
 package = "ncdump_rich"
-python_versions = ["3.12", "3.11", "3.10", "3.9"]
+python_versions = ["3.14", "3.13", "3.12", "3.11", "3.10"]
 nox.needs_version = ">= 2023.4.22"
 nox.options.sessions = (
     "pre-commit",
@@ -75,7 +75,7 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
         hook.write_text("\n".join(lines))
 
 
-@session(name="pre-commit", python="3.12")
+@session(name="pre-commit", python="3.14")
 def precommit(session: Session) -> None:
     """Lint using pre-commit."""
     args = session.posargs or ["run", "--all-files", "--show-diff-on-failure"]
@@ -109,7 +109,7 @@ def mypy(session: Session) -> None:
 @session(python=python_versions)
 def ruff(session: Session) -> None:
     """Format using ruff."""
-    args = session.posargs or ["src", "tests", "docs/conf.py"]
+    args = session.posargs or ["check", "src", "tests", "docs/conf.py"]
     session.install("ruff")
     session.run("ruff", *args)
 
@@ -126,7 +126,7 @@ def tests(session: Session) -> None:
             session.notify("coverage", posargs=[])
 
 
-@session(python="3.12")
+@session(python="3.14")
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
     session.install("coverage[toml]", "codecov")
@@ -153,7 +153,7 @@ def xdoctest(session: Session) -> None:
     session.run("python", "-m", "xdoctest", package, *args)
 
 
-@session(name="docs-build", python="3.12")
+@session(name="docs-build", python="3.14")
 def docs_build(session: Session) -> None:
     """Build the documentation."""
     args = session.posargs or ["docs", "docs/_build"]
@@ -167,7 +167,7 @@ def docs_build(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@session(python="3.12")
+@session(python="3.14")
 def docs(session: Session) -> None:
     """Build and serve the documentation with live reloading on file changes."""
     args = session.posargs or ["--open-browser", "docs", "docs/_build"]

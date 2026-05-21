@@ -1,4 +1,5 @@
 """Command-line interface."""
+
 import sys
 
 import rich_click as click
@@ -44,7 +45,7 @@ def main(filename: str, long: bool, format: bool) -> None:
     else:
         rprint(
             "[bold]ncdump-rich[/bold] can only read [italic green].nc"
-            + f"[/italic green] files, not [italic red].{filename.split('.')[-1]}"
+            + f"[/italic green] files, not [italic red].{filename.rsplit('.', maxsplit=1)[-1]}"
             + "[/italic red]"
         )
         sys.exit()

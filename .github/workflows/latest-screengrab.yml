@@ -7,32 +7,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Upgrade pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
-
-      - name: Install Rye
-        run: |
-          curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
-          source "$HOME/.rye/env"
-          rye --version
-
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       - name: Install project to generate image
         run: |
-          source "$HOME/.rye/env"
-          rye sync -f
-
+          uv sync
       - name: Generate latest terminal images with rich-codex
-        uses: ewels/rich-codex@v1
+        uses: ewels/rich-codex@80de9de011c994f32274bb4cffee140567621d8e # v1.2.11
         with:
           commit_changes: "false"
           skip_git_checks: "true"
           clean_img_paths: |
             ./demo/latest.png
-
       - name: Init new repo in dist folder and commit generated files
         run: |
           cd demo/
@@ -42,7 +33,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git commit -m 'deploy'
       - name: Force push to destination branch
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@4cc74773234f74829a8c21bc4d69dd4be9cfa599 # v1.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: example-image
