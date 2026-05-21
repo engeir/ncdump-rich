@@ -1,0 +1,15 @@
+name: Pinact
+on:
+  pull_request: {}
+jobs:
+  pinact:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+      - name: Pin actions
+        uses: suzuki-shunsuke/pinact-action@28aeb220eb3252ad0d4422dd5d9368e925acbd8d # v1.3.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
