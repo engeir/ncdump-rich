@@ -58,7 +58,7 @@ jobs:
         uses: salsify/action-detect-and-tag-new-version@b1778166f13188a9d478e2d1198f993011ba9864 # v2.0.3
         with:
           version-command: |
-            uv version
+            uv version | cut -d" " -f2
       - name: Bump version for developmental release
         if: "! steps.check-version.outputs.tag"
         run: |
