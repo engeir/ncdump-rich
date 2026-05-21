@@ -7,6 +7,7 @@ so the most important information is presented.
 The flag `-l` `--long` will override the truncation and print a long
 output with all information contained in the .nc file.
 """
+
 import pprint
 import textwrap
 
@@ -63,7 +64,7 @@ class NcDump:
             )
             for ncattr in self.nc_file.variables[key].ncattrs():
                 self.cprint(
-                    "\t\t[italic white]%s:[/italic white]" % ncattr,
+                    f"\t\t[italic white]{ncattr}:[/italic white]",
                     repr(self.nc_file.variables[key].getncattr(ncattr)),
                 )
         except KeyError:
@@ -87,9 +88,10 @@ class NcDump:
         nc_attrs = self.nc_file.ncattrs()
         self.cprint("[bold white]NetCDF Global Attributes:[/bold white]")
         for nc_attr in nc_attrs:
+            ncattr_value = self.nc_file.getncattr(nc_attr)
+
             if any(
-                len(line) > self.width - 9
-                for line in str(self.nc_file.getncattr(nc_attr)).splitlines()
+                len(line) > self.width - 9 for line in str(ncattr_value).splitlines()
             ):
                 lineend = (
                     " [italic white dim]4 spaces = new line; 8 spaces = line wrap[/italic"
@@ -97,8 +99,9 @@ class NcDump:
                 )
             else:
                 lineend = " "
+
             try:
-                if repr(self.nc_file.getncattr(nc_attr)[0]) != repr("\n"):
+                if repr(ncattr_value[0]) != repr("\n"):
                     self.cprint(
                         f"\t[italic white]{nc_attr}:[/italic white]{lineend}"
                         + "\n\t\t".join(
@@ -111,9 +114,7 @@ class NcDump:
                                     replace_whitespace=False,
                                     subsequent_indent="\t\t\t",
                                 )
-                                for line in str(
-                                    self.nc_file.getncattr(nc_attr)
-                                ).splitlines()
+                                for line in str(ncattr_value).splitlines()
                             ]
                         ),
                     )
@@ -130,15 +131,13 @@ class NcDump:
                                     replace_whitespace=False,
                                     subsequent_indent="\t\t\t",
                                 )
-                                for line in str(
-                                    self.nc_file.getncattr(nc_attr)
-                                ).splitlines()
+                                for line in str(ncattr_value).splitlines()
                             ]
                         ),
                     )
-            except IndexError:
+            except IndexError:  # ncattr_value cannot be indexed
                 self.cprint(
-                    "\t[italic white]%s:[/italic white] [red]empty[/red]" % nc_attr
+                    f"\t[italic white]{nc_attr}:[/italic white] {repr(ncattr_value)}"
                 )
         self.cprint("[bold white]NetCDF Dimension Information:[/bold white]")
         for dim in self.nc_dims:
