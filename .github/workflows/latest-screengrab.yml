@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Upgrade pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
@@ -18,7 +18,7 @@ jobs:
         run: |
           uv sync -f
       - name: Generate latest terminal images with rich-codex
-        uses: ewels/rich-codex@v1
+        uses: ewels/rich-codex@80de9de011c994f32274bb4cffee140567621d8e # v1.2.11
         with:
           commit_changes: "false"
           skip_git_checks: "true"

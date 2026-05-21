@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
       - name: Generate a changelog
-        uses: orhun/git-cliff-action@v2
+        uses: orhun/git-cliff-action@b7913b664658dd091d9971658cb02a19047baa79 # v2.3.0
         id: git-cliff
         with:
           config: pyproject.toml
@@ -35,11 +35,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 2
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@7f4fc3e22c37d6ff65e88745f38bd3157c663f7c # v4.9.1
         with:
           python-version: "3.12"
       - name: Upgrade pip
@@ -55,7 +55,7 @@ jobs:
       - name: Detect and tag new version
         id: check-version
         if: steps.check-parent-commit.outputs.sha
-        uses: salsify/action-detect-and-tag-new-version@v2.0.3
+        uses: salsify/action-detect-and-tag-new-version@b1778166f13188a9d478e2d1198f993011ba9864 # v2.0.3
         with:
           version-command: |
             uv version
@@ -70,19 +70,19 @@ jobs:
           uv build
       - name: Publish package on PyPI
         if: steps.check-version.outputs.tag
-        uses: pypa/gh-action-pypi-publish@v1.8.12
+        uses: pypa/gh-action-pypi-publish@e53eb8b103ffcb59469888563dc324e3c8ba6f06 # v1.8.12
         with:
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
       - name: Publish package on TestPyPI
         if: "! steps.check-version.outputs.tag"
-        uses: pypa/gh-action-pypi-publish@v1.8.12
+        uses: pypa/gh-action-pypi-publish@e53eb8b103ffcb59469888563dc324e3c8ba6f06 # v1.8.12
         with:
           user: __token__
           password: ${{ secrets.TEST_PYPI_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
       - name: Publish the release notes
-        uses: release-drafter/release-drafter@v5.25.0
+        uses: release-drafter/release-drafter@09c613e259eb8d4e7c81c2cb00618eb5fc4575a7 # v5.25.0
         with:
           publish: ${{ steps.check-version.outputs.tag != '' }}
           tag: ${{ steps.check-version.outputs.tag }}
