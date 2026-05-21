@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.
 - There is no `-f` for force in UV // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 - Nox was expecting 3.12, not 3.14 // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 - Bump python version // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
+- Dont format CHANGELOG // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 
 ### Revert
 
@@ -42,6 +43,8 @@ All notable changes to this project will be documented in this file.
 - Set up optional mise dev environment // (engeir <engeir@pm.me> 2024-03-11)
 - Swap to uv over old rye // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
 - Swap to uv over old rye // (GitHub <noreply@github.com> 2026-05-21)
+- Bump version // (engeir <38856990+engeir@users.noreply.github.com> 2026-05-21)
+- Bump version // (GitHub <noreply@github.com> 2026-05-21)
 
 ## [0.5.2] - 2024-02-27
 
