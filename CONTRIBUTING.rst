@@ -43,24 +43,24 @@ Request features on the `Issue Tracker`_.
 How to set up your development environment
 ------------------------------------------
 
-You need Python 3.9+ and the following tools:
+You need Python 3.10+ and the following tools:
 
-- Rye_
+- Uv_
 - Nox_
 
 Install the package with development requirements:
 
 .. code:: console
 
-   $ rye sync
+   $ uv sync
 
 You can now run an interactive Python session,
 or the command-line interface:
 
 .. code:: console
 
-   $ rye run python
-   $ rye run ncdump-rich
+   $ uv run python
+   $ uv run ncdump-rich
 
 Additionally, you can use Mise_ to manage and automatically activate your virtual
 environment by running:
@@ -69,7 +69,7 @@ environment by running:
 
    $ mise set MISE_ENV=development
 
-.. _Rye: https://rye-up.com/
+.. _Uv: https://docs.astral.sh/uv/
 .. _Nox: https://nox.thea.codes/
 .. _Mise: https://mise.jdx.dev/
 
