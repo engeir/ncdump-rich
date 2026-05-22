@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Miscellaneous Tasks
+
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+- Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-05-22)
+
+### Build
+
+- Bump sphinx-click from 4.4.0 to 6.2.0 // (GitHub <noreply@github.com> 2026-05-22)
+
 ## [0.5.4] - 2026-05-21
 
 ### Bug Fixes
