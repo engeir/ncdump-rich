@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+## [0.5.4] - 2026-05-21
+
 ### Bug Fixes
 
 - Remove awk command in version parse // (GitHub <noreply@github.com> 2024-02-27)
