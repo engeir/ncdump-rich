@@ -68,6 +68,18 @@ All notable changes to this project will be documented in this file.
 - Bump sphinx from 8.1.3 to 9.1.0 in /docs // (GitHub <noreply@github.com> 2026-05-22)
 - Bump sphinx from 8.1.3 to 9.1.0 in /docs // (GitHub <noreply@github.com> 2026-05-22)
 - Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-05-22)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-25)
+- Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-05-25)
 
 ### Build
 
@@ -76,6 +88,7 @@ All notable changes to this project will be documented in this file.
 - Bump sphinx-rtd-theme from 1.2.0 to 3.1.0 in /docs // (GitHub <noreply@github.com> 2026-05-22)
 - Bump sphinx-rtd-theme from 1.2.0 to 3.1.0 // (GitHub <noreply@github.com> 2026-05-22)
 - Bump sphinx from 8.1.3 to 9.1.0 in /docs // (GitHub <noreply@github.com> 2026-05-22)
+- Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-26)
 
 ## [0.5.4] - 2026-05-21
 
