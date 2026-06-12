@@ -104,6 +104,19 @@ All notable changes to this project will be documented in this file.
 - Bump suzuki-shunsuke/pinact-action from 2.0.0 to 3.0.0 // (GitHub <noreply@github.com> 2026-05-26)
 - Bump suzuki-shunsuke/pinact-action from 2.0.0 to 3.0.0 // (GitHub <noreply@github.com> 2026-05-26)
 - Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-05-26)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-03)
+- Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-06-03)
 
 ### Build
 
@@ -115,6 +128,7 @@ All notable changes to this project will be documented in this file.
 - Bump ad-m/github-push-action from 1.1.0 to 1.3.0 // (GitHub <noreply@github.com> 2026-05-26)
 - Bump release-drafter/release-drafter from 7.3.0 to 7.3.1 // (GitHub <noreply@github.com> 2026-05-26)
 - Bump suzuki-shunsuke/pinact-action from 2.0.0 to 3.0.0 // (GitHub <noreply@github.com> 2026-05-26)
+- Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-12)
 
 ## [0.5.4] - 2026-05-21
 
