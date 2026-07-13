@@ -129,6 +129,19 @@ All notable changes to this project will be documented in this file.
 - Bump astral-sh/setup-uv from 8.1.0 to 8.2.0 // (GitHub <noreply@github.com> 2026-06-12)
 - Bump astral-sh/setup-uv from 8.1.0 to 8.2.0 // (GitHub <noreply@github.com> 2026-06-12)
 - Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-06-12)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
+- Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-06-19)
 
 ### Build
 
@@ -142,6 +155,7 @@ All notable changes to this project will be documented in this file.
 - Bump suzuki-shunsuke/pinact-action from 2.0.0 to 3.0.0 // (GitHub <noreply@github.com> 2026-05-26)
 - Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-12)
 - Bump astral-sh/setup-uv from 8.1.0 to 8.2.0 // (GitHub <noreply@github.com> 2026-06-12)
+- Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-07-13)
 
 ## [0.5.4] - 2026-05-21
 
