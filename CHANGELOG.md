@@ -142,6 +142,7 @@ All notable changes to this project will be documented in this file.
 - Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
 - Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
 - Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-06-19)
+- Pin GitHub Actions // (han-eirik[bot] <157013696+han-eirik@users.noreply.github.com> 2026-07-13)
 
 ### Build
 
