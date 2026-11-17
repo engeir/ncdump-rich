@@ -143,6 +143,18 @@ All notable changes to this project will be documented in this file.
 - Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-06-19)
 - Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-06-19)
 - Pin GitHub Actions // (han-eirik[bot] <157013696+han-eirik@users.noreply.github.com> 2026-07-13)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Update uv-build requirement // (GitHub <noreply@github.com> 2026-10-12)
+- Dependabot[bot] <support@github.com> // (GitHub <noreply@github.com> 2026-10-12)
 
 ### Build
 
@@ -157,6 +169,7 @@ All notable changes to this project will be documented in this file.
 - Bump actions/checkout from 6.0.2 to 6.0.3 // (GitHub <noreply@github.com> 2026-06-12)
 - Bump astral-sh/setup-uv from 8.1.0 to 8.2.0 // (GitHub <noreply@github.com> 2026-06-12)
 - Bump actions/checkout from 6.0.3 to 7.0.0 // (GitHub <noreply@github.com> 2026-07-13)
+- Update uv-build requirement from <0.12,>=0.11.15 to >=0.11.15,<0.14 // (GitHub <noreply@github.com> 2026-11-17)
 
 ## [0.5.4] - 2026-05-21
 
